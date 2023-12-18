@@ -1,0 +1,105 @@
+<!--Top navbar-->
+<mat-toolbar color="warn" class="mat-elevation-z7">
+    <button (click)="drawer.toggle()" mat-icon-button>
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span class="title-text ">Monitoring website</span>
+    <span class="example-spacer"></span>
+
+    <!--toolbar buttons-->
+    <div class="button-action">
+
+        <!--Home button-->
+        <button routerLink="/home" mat-raised-button color="primary" class="toolbar-button">
+            <span class="toolbar-item">Home</span>
+            <mat-icon>home</mat-icon>
+        </button>
+
+        <!--Contact button-->
+        <button [matMenuTriggerFor]="lv1contact" mat-raised-button color="primary" class="toolbar-button">
+            <span class="toolbar-item">Contact</span>
+            <mat-icon> forum</mat-icon>
+        </button>
+
+        <!--Notifications button-->
+        <mat-menu #lv1contact="matMenu">
+            <button (click)="badgevisibility()" mat-menu-item>
+                <span class="menu-text">Notifications</span>
+                <mat-icon matBadge="3" matBadgeColor="accent" matBadgeSize="small" [matBadgeHidden]="badgevisible"
+                    mat-raised-button>
+                    notification_important
+                </mat-icon>
+            </button>
+        
+        <!--Messages button-->
+            <button mat-menu-item>
+                <span class="menu-text">Message</span>
+                <mat-icon> message</mat-icon>
+            </button>
+        </mat-menu>
+
+        <!--About button-->
+        <button routerLink="/about" mat-raised-button color="primary" class="toolbar-button">
+            <span class="toolbar-item">About</span>
+            <mat-icon>help_outline</mat-icon>
+        </button>
+    </div>
+</mat-toolbar>
+
+
+<!--Side navbar-->
+<mat-drawer-container autosize>
+    <!---side: Sidenav floats over the primary content, which is covered by a backdrop 
+        - over: Sidenav pushes the primary content out of its way, also covering it with a backdrop
+        - push: Sidenav appears side-by-side with the main content, shrinking the main content's width to make space for the sidenav-->
+    <mat-drawer #drawer opened="true" mode="side" position="start">
+        <div class="centered-items">
+            <mat-nav-list>
+                <mat-list-item routerLink="/dashboard" class="centered-list-item">
+                    <button mat-icon-button><mat-icon>dashboard</mat-icon></button>
+                    <span class="item-label">Dashboard</span>
+                </mat-list-item>
+
+                <mat-list-item routerLink="/home" class="centered-list-item">
+                    <button mat-icon-button><mat-icon>home</mat-icon></button>
+                    <span class="item-label">Home</span>
+                </mat-list-item>
+
+                <mat-list-item routerLink="/sensors" class="centered-list-item">
+                    <button mat-icon-button><mat-icon>important_devices</mat-icon></button>
+                    <span class="item-label">Sensors</span>
+                </mat-list-item>
+
+                <mat-list-item routerLink="/analysis" class="centered-list-item">
+                    <button mat-icon-button><mat-icon>assessment</mat-icon></button>
+                    <span class="item-label">Analysis</span>
+                </mat-list-item>
+
+                <mat-list-item routerLink="tts" class="centered-list-item">
+                    <button mat-icon-button><mat-icon>cloud_circle</mat-icon></button>
+                    <span class="item-label">The Things Stack</span>
+                </mat-list-item>
+
+                <mat-list-item routerLink="/user_profile" class="centered-list-item">
+                    <button mat-icon-button><mat-icon>person</mat-icon></button>
+                    <span class="item-label">User Profile</span>
+                </mat-list-item>
+
+                <mat-list-item routerLink="/settings" class="centered-list-item">
+                    <button mat-icon-button><mat-icon>settings</mat-icon></button>
+                    <span class="item-label">Settings</span>
+                </mat-list-item>
+
+                <mat-list-item class="centered-list-item">
+                    <button mat-icon-button><mat-icon>help</mat-icon></button>
+                    <span class="item-label">Help</span>
+                </mat-list-item>
+            </mat-nav-list>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div style="text-align: center; min-height: 900px;">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

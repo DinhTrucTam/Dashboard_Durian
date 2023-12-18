@@ -1,0 +1,43 @@
+.tts-card {
+    width: 80%;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 8px 7px 8px 0 rgba(16, 152, 236, 0.2);
+    /* Ensure content doesn't overflow the card */
+}
+
+.tts-card-header {
+    background-color: #f5f5f5;
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tts-card-title {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 30px;
+}
+
+.tts-text {
+    font-family: 'Ubuntu', sans-serif;
+    padding: 20px;
+    line-height: 1.8;
+    font-size: 20px;
+    text-align: justify;
+}
+
+.image{
+    width: auto;
+    height: 300px;
+}
+
+.link {
+    font-size: 22px;
+    transition: background-color 0.3s ease;
+}
+
+.link:hover {
+    background-color: aquamarine;
+}

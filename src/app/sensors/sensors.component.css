@@ -1,0 +1,35 @@
+/* Style for individual cards */
+.title{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 30px;
+}
+
+.sensor-card {
+    width: auto;
+    height: 150px;
+    /* Set the width for a 2x2 grid */
+    margin: 50px;
+    box-shadow: 8px 7px 8px 0 rgba(0, 0, 0, 0.2);
+    /* Add shadow effect */
+    background-color: bisque;
+    font-size: larger;
+    border-radius: 20px;
+}
+
+.data-title{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 22px;
+}
+
+.data-information {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .sensor-card {
+        width: calc(100% - 20px);
+        /* Full width for smaller screens */
+    }
+}

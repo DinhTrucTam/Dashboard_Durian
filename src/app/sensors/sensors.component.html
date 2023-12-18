@@ -1,0 +1,40 @@
+<br>
+<br>
+<h1 class="title">My Sensors</h1>
+<mat-tab-group animationDuration="500ms">
+    <mat-tab label="LSN50v2-S31B">
+        <!-- Cards for LSN50v2-S31B -->
+        <mat-card *ngFor="let information of lsn50v2S31BSensors" class="sensor-card">
+            <mat-card-header>
+                <mat-card-title><span class="data-title">{{ information.title }}</span></mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <span class="data-information">{{ information.details }}</span>
+            </mat-card-content>
+        </mat-card>
+    </mat-tab>
+
+    <mat-tab label="LSN50v2-8">
+        <!-- Cards for LSN50v2-8 -->
+        <mat-card *ngFor="let information of lsn50v28Sensors" class="sensor-card">
+            <mat-card-header>
+                <mat-card-title><span class="data-title">{{ information.title }}</span></mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <span class="data-information">{{ information.details }}</span>
+            </mat-card-content>
+        </mat-card>
+    </mat-tab>
+
+    <mat-tab label="LSE01-8">
+        <!-- Cards for LSE01-8 -->
+        <mat-card *ngFor="let information of lse018Sensors" class="sensor-card">
+            <mat-card-header>
+                <mat-card-title><span class="data-title">{{ information.title }}</span></mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <span class="data-information">{{ information.details }}</span>
+            </mat-card-content>
+        </mat-card>
+    </mat-tab>
+</mat-tab-group>
