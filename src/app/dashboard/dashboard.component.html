@@ -1,25 +1,127 @@
-<br>
-<div class="grid-container">
-  <h1 class="dashboard-title">My Dashboard</h1>
-  <mat-grid-list cols="2" rowHeight="350px">
-    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
-      <mat-card class="dashboard-card">
-        <mat-card-header>
-          <mat-card-title>
-            <span class="card-title-text">{{card.title}}</span>
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu" xPosition="before">
-              <button mat-menu-item><span class="menu-item-text">Expand</span></button>
-              <button mat-menu-item><span class="menu-item-text">Remove</span></button>
-            </mat-menu>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
-          <div>Card Content Here</div>
+<div class="dashboard-container">
+  <div class="card-container">
+    <mat-card *ngFor="let information of Dashboard_Header" class="head-page-cards">
+      <mat-card-header class="head-page-headers">
+        <mat-card-title class="header-text">{{ information.title }}</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content class="numeric_values">
+        <div>{{ information.values }}</div>
+      </mat-card-content>
+
+      <mat-card-content class="data-information">
+        <div>{{ information.info}}</div>
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+
+  <div class="card-container">
+    <mat-card class="card">
+      <mat-card-header class="card-header-air">
+        <mat-card-title>
+          <div class="title-name">
+            <span>Air Conditions <span class="more-detail">(from sensors)</span></span>
+          </div>
+          <div class="header-sub-content">
+            <span>last updated:</span>
+          </div>
+        </mat-card-title>
+      </mat-card-header>
+
+      <div class="card-databox">
+        <mat-card-content class="card-content-air">
+          <div class="card-sizing">
+            <div class="card-title">Temperature</div>
+            <div class="card-image">
+              <img src="{{ Air_Information[0].imageUrl }}" alt="{{ Air_Information[0].title }}">
+            </div>
+            <div class="card-hello">
+              <span>{{ Air_Information[0].temp }}°C</span>
+            </div>
+          </div>
+
+          <div class="card-sizing">
+            <div class="card-title">Humidity</div>
+            <div class="card-image">
+              <img src="{{ Air_Information[1].imageUrl }}" alt="{{ Air_Information[1].title }}">
+            </div>
+            <div class="card-hello">
+              <span>{{ Air_Information[1].humid }}%</span>
+            </div>
+          </div>
+
+          <div class="card-sizing">
+            <div class="card-title">Illuminance</div>
+            <div class="card-image">
+              <img src="{{ Air_Information[2].imageUrl }}" alt="{{ Air_Information[2].title }}">
+            </div>
+            <div class="card-hello">
+              <span>{{ Air_Information[2].illum }} lux</span>
+            </div>
+          </div>
         </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+      </div>
+    </mat-card>
+
+    <mat-card class="card">
+      <mat-card-header class="card-header-soil">
+        <mat-card-title>
+          <div class="title-name">
+            <span>Soil Conditions <span class="more-detail">(from sensors)</span></span>
+          </div>
+          <div class="header-sub-content">
+            <span>last updated:</span>
+          </div>
+        </mat-card-title>
+      </mat-card-header>
+
+      <div class="card-databox">
+        <mat-card-content class="card-content-air">
+          <div class="card-sizing">
+            <div class="card-title">Temperature</div>
+            <div class="card-image">
+              <img src="{{ Soil_Information[0].imageUrl }}" alt="{{ Soil_Information[0].title }}">
+            </div>
+            <div class="card-hello">
+              <span>{{ Soil_Information[0].temp }}°C</span>
+            </div>
+          </div>
+
+          <div class="card-sizing">
+            <div class="card-title">Moisture</div>
+            <div class="card-image">
+              <img src="{{ Soil_Information[1].imageUrl }}" alt="{{ Soil_Information[1].title }}">
+            </div>
+            <div class="card-hello">
+              <span>{{ Soil_Information[1].moist }}%</span>
+            </div>
+          </div>
+
+          <div class="card-sizing">
+            <div class="card-title">EC</div>
+            <div class="card-image">
+              <img src="{{ Soil_Information[2].imageUrl }}" alt="{{ Soil_Information[2].title }}">
+            </div>
+            <div class="card-hello">
+              <span>{{ Soil_Information[2].EC }} uS/cm</span>
+            </div>
+          </div>
+        </mat-card-content>
+      </div>
+    </mat-card>
+  </div>
+
+  <mat-card-header class="card-header-weather-forecast">
+    <mat-card-title>
+      <div class="title-name">
+        Weather Forecast
+      </div>
+    </mat-card-title>
+  </mat-card-header>
+
+  <div class="weather-container">
+    <div class="left-container"><app-left-container></app-left-container></div>
+    <div class="right-container"><app-right-container></app-right-container></div>
+  </div>
 </div>

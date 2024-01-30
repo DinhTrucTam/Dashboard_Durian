@@ -1,21 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500&family=Ubuntu:wght@300;400;500&display=swap');
 
-html, body { height: 100%; }
-body { 
-    margin: 0; 
-    font-family: Ubuntu, sans-serif; 
-    background-image: url('./pexels-tim-mossholder-974314.jpg');
-        /* Replace 'your-image-file.jpg' with your actual image file name and extension */
-    
-        /* Define how the background image should be displayed */
-        background-size: cover;
-        /* Adjust the size to cover the entire body */
-        background-position: center;
-        /* Center the image */
-        /* Add other necessary styles */
-}
-div .mat-mdc-tab {
-    font-family: Ubuntu, sans-serif;
-    font-size: 20px;
-    font-weight: 400;
+body {
+    margin: 0;
+    padding: 0;
+    overflow: scroll;
+    height: 100%;
+    font-family: 'Hind', sans-serif;
 }

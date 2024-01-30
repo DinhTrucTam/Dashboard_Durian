@@ -1,40 +1,110 @@
-<br>
-<br>
-<h1 class="title">My Sensors</h1>
-<mat-tab-group animationDuration="500ms">
-    <mat-tab label="LSN50v2-S31B">
-        <!-- Cards for LSN50v2-S31B -->
-        <mat-card *ngFor="let information of lsn50v2S31BSensors" class="sensor-card">
-            <mat-card-header>
-                <mat-card-title><span class="data-title">{{ information.title }}</span></mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-                <span class="data-information">{{ information.details }}</span>
-            </mat-card-content>
-        </mat-card>
-    </mat-tab>
+<div class="sensors-container">
+    <h1 class="title">My Sensors</h1>
+    <mat-tab-group class="tabs" animationDuration="500ms">
+        <mat-tab label="LSN50v2-S31B">  
+            <div class="card-container">
+                <!-- Cards for LSN50v2-S31B -->
+                <mat-card *ngFor="let information of lsn50v2S31BSensors" class="sensor-card">
+                    <mat-card-header class="card-header">
+                        <mat-card-title>
+                            <div class="data-title">{{ information.title }}</div>
+                        </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content class="content-container">
+                        <img [src]="information.imageUrl">
+                        <span class="numeric_values">{{ information.temperature_first}}</span>
+                        <span class="numeric_values" *ngIf="information.title.includes('Temperature')">&deg;C</span>
 
-    <mat-tab label="LSN50v2-8">
-        <!-- Cards for LSN50v2-8 -->
-        <mat-card *ngFor="let information of lsn50v28Sensors" class="sensor-card">
-            <mat-card-header>
-                <mat-card-title><span class="data-title">{{ information.title }}</span></mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-                <span class="data-information">{{ information.details }}</span>
-            </mat-card-content>
-        </mat-card>
-    </mat-tab>
+                        <span class="numeric_values">{{ information.humidty_first }}</span>
+                        <span class="numeric_values" *ngIf="information.title.includes('Humidity')">%</span>
 
-    <mat-tab label="LSE01-8">
-        <!-- Cards for LSE01-8 -->
-        <mat-card *ngFor="let information of lse018Sensors" class="sensor-card">
-            <mat-card-header>
-                <mat-card-title><span class="data-title">{{ information.title }}</span></mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-                <span class="data-information">{{ information.details }}</span>
-            </mat-card-content>
-        </mat-card>
-    </mat-tab>
-</mat-tab-group>
+                        <span class="numeric_values">{{ information.alarm_first }}</span>
+
+                        <span class="numeric_values">{{ information.battery_first }}</span>
+                        <span class="numeric_values" *ngIf="information.title.includes('Battery')">%</span>
+
+                        <div class="data-information"
+                            *ngIf="information.title === 'Overall Status' && information.status">
+                            <!-- Display 'Connection', 'Battery', and 'Last Updated' for 'Status' entry -->
+                            <div><strong>Connection:</strong> {{ information.status.connection }}</div><br>
+                            <div><strong>Battery:</strong> {{ information.status.battery }}</div><br>
+                            <div><strong>Last Updated:</strong> {{ information.status.lastUpdated }}</div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="LSN50v2-8">
+            <!-- Cards for LSN50v2-8 -->
+            <div class="card-container">
+                <mat-card *ngFor="let information of lsn50v28Sensors" class="sensor-card">
+                    <mat-card-header class="card-header">
+                        <mat-card-title>
+                            <div class="data-title">{{ information.title }}</div>
+                        </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content class="content-container">
+                        <img mat-card-image [src]="information.imageUrl">
+                        <div class="data-information" class="numeric_values">{{ information.temperature_third }}</div>
+                        <span class="numeric_values" *ngIf="information.title.includes('Temperature')">&deg;C</span>
+
+                        <div class="data-information" class="numeric_values">{{ information.illum_third }}
+                            <span *ngIf="information.title.includes('Illuminance')">lux
+                            </span>
+                        </div>
+
+                        <div class="data-information" class="numeric_values">{{ information.battery_third }}</div>
+                        <span class="numeric_values" *ngIf="information.title.includes('Battery')">%</span>
+
+                        <div class="data-information"
+                            *ngIf="information.title === 'Overall Status' && information.status">
+                            <!-- Display 'Connection', 'Battery', and 'Last Updated' for 'Status' entry -->
+                            <div><strong>Connection:</strong> {{ information.status.connection }}</div><br>
+                            <div><strong>Battery:</strong> {{ information.status.battery }}</div><br>
+                            <div><strong>Last Updated:</strong> {{ information.status.lastUpdated }}</div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="LSE01-8">
+            <!-- Cards for LSE01-8 -->
+            <div class="card-container">
+                <mat-card *ngFor="let information of lse018Sensors" class="sensor-card">
+                    <mat-card-header class="card-header">
+                        <mat-card-title>
+                            <div class="data-title">{{ information.title }}</div>
+                        </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content class="content-container">
+                        <img mat-card-image [src]="information.imageUrl">
+                        <span class="data-information" class="numeric_values">{{ information.temperature_second
+                            }}</span>
+                        <span class="numeric_values" *ngIf="information.title.includes('Temperature')">&deg;C</span>
+
+                        <span class="data-information" class="numeric_values">{{ information.moisture_second }}</span>
+                        <span class="numeric_values" *ngIf="information.title.includes('Moisture')">%</span>
+
+                        <div class="data-information" class="numeric_values">{{ information.EC_second }}
+                            <span *ngIf="information.title.includes('EC')">uS/cm
+                            </span>
+                        </div>
+
+                        <span class="data-information" class="numeric_values">{{ information.battery_second }}</span>
+                        <span class="numeric_values" *ngIf="information.title.includes('Battery')">%</span>
+
+                        <div class="data-information"
+                            *ngIf="information.title === 'Overall Status' && information.status">
+                            <!-- Display 'Connection', 'Battery', and 'Last Updated' for 'Status' entry -->
+                            <div><strong>Connection:</strong> {{ information.status.connection }}</div><br>
+                            <div><strong>Battery:</strong> {{ information.status.battery }}</div><br>
+                            <div><strong>Last Updated:</strong> {{ information.status.lastUpdated }}</div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

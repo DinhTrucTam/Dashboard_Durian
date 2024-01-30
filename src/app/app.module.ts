@@ -33,7 +33,13 @@ import { SettingsComponent } from './settings/settings.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { MatTabsModule } from '@angular/material/tabs'
+import { MatTabsModule } from '@angular/material/tabs';
+import { LeftContainerComponent } from './left-container/left-container.component';
+import { RightContainerComponent } from './right-container/right-container.component'
+
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -47,9 +53,11 @@ import { MatTabsModule } from '@angular/material/tabs'
     UserProfileComponent,
     ChatboxComponent,
     SigninComponent,
-    SignupComponent, 
+    SignupComponent,
     TtsComponent,
     SettingsComponent,
+    LeftContainerComponent,
+    RightContainerComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +77,9 @@ import { MatTabsModule } from '@angular/material/tabs'
     MatInputModule,
     ReactiveFormsModule,
     MatGridListModule,
-    MatTabsModule
+    MatTabsModule,
+    FontAwesomeModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

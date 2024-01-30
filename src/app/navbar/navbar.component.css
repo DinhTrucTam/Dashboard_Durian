@@ -1,9 +1,16 @@
 .mat-elevation-z7 {
-    font-family: 'Ubuntu', sans-serif;
-    background-color: #c1d8f0;
+    background-color: rgba(242, 255, 201, 0.71);
+    border: 3px solid rgba(223, 249, 139, 0.71);
+    border-radius: 10px;
+    margin-top: 1px;
+    margin-left: 1px;
+    margin-bottom: 1px;
+    box-shadow: none;
 }
 
-.title-text{
+.title-text {
+    font-family: 'Hind', sans-serif;
+    font-weight: bold;
     color: black
 }
 
@@ -11,75 +18,92 @@
     flex: 1 1 auto;
 }
 
-.toolbar-button {
-    font-family: 'Ubuntu', sans-serif;
-    flex: 1;
-    margin: 0 5px;
-    /* Adjust margin as needed for spacing between buttons */
-    min-width: 0;
-    /* Allow the button to shrink if needed */
-    border-radius: 15px;
-    background-color: #bb9966;
-}
-
-.toolbar-item{
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 15px;
-}
-
-.menu-text {
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 15px;
-}
-
-
 .button-action {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
-    width: 30%;
+    width: 20%;
     /* Adjust width of the toolbar buttons container */
 }
 
+.toolbar-button {
+    font-family: 'Hind', sans-serif;
+    flex: 1;
+    margin: 0 10px;
+    /* Adjust margin as needed for spacing between buttons */
+    border: 2px solid #ccd4a4;
+    border-radius: 15px;
+    background-color: #bb9966;
+    box-shadow: 2px 2px 2px 0 rgba(78, 72, 50, 0.575);
+    transition: background-color 1s ease;
+}
+
+.toolbar-button:hover {
+    background-color: #ccd4a4;
+}
+
+.toolbar-item {
+    font-family: 'Hind', sans-serif;
+    font-size: 14px;
+    color: black;
+    font-weight: bold;
+    align-items: center;
+    margin-top: 3px;
+}
+
+.menu-text {
+    font-family: 'Hind', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+
 .mat-toolbar-row {
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Hind', sans-serif;
     width: 100%;
     /* Ensure the toolbar row spans the full width */
 }
 
-
 .centered-items {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    border: 3px solid #bebcfa75;
+    border-radius: 10px;
+    color: black;
+    margin-left: 2px;
+    background-color: #bebcfa75;
 }
 
 .centered-list-item {
+    /* Allow the button to shrink if needed */
+    flex: 1;
     display: flex;
-    align-items: center;
-    padding: 30px;
-    /* Adjust padding as needed */
+    flex-direction: row;
+    padding: 40px;
     cursor: pointer;
-    /* Show pointer cursor on hover */
-    width: 100%;
-    /* Adjust width as needed */
-    margin: 5px auto;
-    /* Add margin for spacing */
-    transition: background-color 0.3s ease;
+    width: 85%;
+    margin-left: 16.5px;
+    margin-right: 20px;
+    margin-top: 20px;
+    border: 3px solid rgba(9, 89, 138, 0.41);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 0px 2px 2px rgba(16, 152, 236, 0.2);
+    transition: background-color 1s ease;
+    background-color: rgba(255, 255, 231, 0.7);
 }
 
-.centered-list-item:hover{
-    background-color: #c1d8f0;
-}
-
-.centered-list-item button {
-    margin-right: 1px;
-    /* Adjust margin between icon and label */
+.icon-image {
+    flex: 1;
+    /* margin-left: 5px; */
 }
 
 .item-label {
-    font-family: 'Ubuntu', sans-serif;
-    font-size: larger;
-    /* Allow the label to take available space */
+    font-family: 'Hind', sans-serif;
+    font-weight: 500;
+    display: flex;
+    margin-top: -28.6px;
+    margin-left: 40px;
+    align-items: center;
 }
 
+.centered-list-item:hover {
+    background-color: #ccd4a4;
+}

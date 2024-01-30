@@ -1,0 +1,281 @@
+<div class="right-container">
+    <div class="right-container-navbar">
+        <div class="navbar-tabs">
+            <div class="today" (click)="onTodayClick()"
+                [className]="this.weatherService.today == true?'today today-active':'today'">Today
+            </div>
+
+            <div class="current-week" (click)="onCurrentWeekClick()"
+                [className]="this.weatherService.current_week == true?'current-week current-week-active':'current-week'">
+                Following Week</div>
+
+            <div class="underline"
+                [className]="this.weatherService.today == true?'underline underline-today':'underline underline-current-week'">
+            </div>
+        </div>
+
+        <div class="navbar-degree-metrics">
+            <div class="celsius" (click)="onCelsiusClick()"
+                [className]="this.weatherService.celsius == true?'celsius celsius-active':'celsius'">°C</div>
+            <div class="fahrenheit" (click)="onFahrenheitClick()"
+                [className]="this.weatherService.fahrenheit == true?'fahrenheit fahrenheit-active':'fahrenheit'">°F
+            </div>
+        </div>
+    </div>
+
+    <div class="right-container-databox">
+        <div class="right-container-week-cards" *ngIf="this.weatherService.current_week == true">
+            <div class="card" *ngFor="let card of weatherService.weekData">
+                <div class="card-day">{{card.day}}</div>
+                <div class="card-temp-image">
+                    <img src={{card.summaryImage}} alt="summaryImage">
+                </div>
+                <div class="card-temp-value">
+                    <span class="temp-max">{{this.weatherService.celsius == true ? card.maxTemperature :
+                        this.weatherService.celsiusToFahrenheit(card.maxTemperature) }}° </span>
+                    <span class="temp-min">{{ this.weatherService.celsius == true ? card.minTemperature :
+                        this.weatherService.celsiusToFahrenheit(card.minTemperature) }}°</span>
+                </div>
+            </div>
+            <!-- <div class="card">
+                <div class="card-day">Monday</div>
+                <div class="card-temp-image">
+                    <img src="./../../assets/Weather conditions/Sunny.png" alt="">
+                </div>
+                <div class="card-temp-value">
+                    <span class="temp-max">35° </span>
+                    <span class="temp-min">20°</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-day">Tuesday</div>
+                <div class="card-temp-image">
+                    <img src="./../../assets/Weather conditions/Sunny.png" alt="">
+                </div>
+                <div class="card-temp-value">
+                    <span class="temp-max">35° </span>
+                    <span class="temp-min">20°</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-day">Wednesday</div>
+                <div class="card-temp-image">
+                    <img src="./../../assets/Weather conditions/Sunny + Cloudy.png" alt="">
+                </div>
+                <div class="card-temp-value">
+                    <span class="temp-max">35° </span>
+                    <span class="temp-min">20°</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-day">Thursday</div>
+                <div class="card-temp-image">
+                    <img src="./../../assets/Weather conditions/Small Rain.png" alt="">
+                </div>
+                <div class="card-temp-value">
+                    <span class="temp-max">35° </span>
+                    <span class="temp-min">20°</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-day">Friday</div>
+                <div class="card-temp-image">
+                    <img src="./../../assets/Weather conditions/Strong Rain.png" alt="">
+                </div>
+                <div class="card-temp-value">
+                    <span class="temp-max">35° </span>
+                    <span class="temp-min">20°</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-day">Saturday</div>
+                <div class="card-temp-image">
+                    <img src="./../../assets/Weather conditions/Cloudy.png" alt="">
+                </div>
+                <div class="card-temp-value">
+                    <span class="temp-max">35° </span>
+                    <span class="temp-min">20°</span>
+                </div>
+            </div> -->
+        </div>
+
+        <div class="right-container-today-cards" *ngIf="this.weatherService.today == true">
+            <div class="card" *ngFor="let card of this.weatherService.todayData">
+                <div class="card-day">{{card.time}}</div>
+                <div class="card-temp-image">
+                    <img src={{card.summaryImage}} alt="summaryImage">
+                </div>
+                <div class="card-temp-value">{{this.weatherService.celsius == true ? card.temperature :
+                    this.weatherService.celsiusToFahrenheit(card.temperature)
+                    }}{{this.weatherService.celsius == true ? "°C" : "°F" }}</div>
+            </div>
+            <!-- <div class="card">
+                <div class="card-day">03:00 AM</div>
+                <div class="card-temp-image">
+                    <img src="./../../assets/Weather conditions/Sunny.png" alt="">
+                </div>
+                <div class="card-temp-value">32°</div>
+            </div>
+            <div class="card">
+                <div class="card-day">06:00 PM</div>
+                <div class="card-temp-image">
+                    <img src="./../../assets/Weather conditions/Sunny.png" alt="">
+                </div>
+                <div class="card-temp-value">32°</div>
+            </div>
+            <div class="card">
+                <div class="card-day">09:00 PM</div>
+                <div class="card-temp-image">
+                    <img src="./../../assets/Weather conditions/Sunny.png" alt="">
+                </div>
+                <div class="card-temp-value">32°</div>
+            </div>
+            <div class="card">
+                <div class="card-day">12:00 PM</div>
+                <div class="card-temp-image">
+                    <img src="./../../assets/Weather conditions/Sunny.png" alt="">
+                </div>
+                <div class="card-temp-value">32°</div>
+            </div>
+            <div class="card">
+                <div class="card-day">15:00 PM</div>
+                <div class="card-temp-image">
+                    <img src="./../../assets/Weather conditions/Sunny.png" alt="">
+                </div>
+                <div class="card-temp-value">32°</div>
+            </div>
+            <div class="card">
+                <div class="card-day">18:00 PM</div>
+                <div class="card-temp-image">
+                    <img src="./../../assets/Weather conditions/Sunny.png" alt="">
+                </div>
+                <div class="card-temp-value">32°</div>
+            </div>
+            <div class="card">
+                <div class="card-day">21:00 PM</div>
+                <div class="card-temp-image">
+                    <img src="./../../assets/Weather conditions/Sunny.png" alt="">
+                </div>
+                <div class="card-temp-value">32°</div>
+            </div> -->
+        </div>
+
+        <div class="right-container-today-highlights">
+            <div class="right-container-today-highlights-title">Today's Highlights</div>
+            <div class="right-container-today-highlights-cards">
+                <div class="right-container-today-highlights-card">
+                    <div class="right-container-today-highlights-card-title">Current UV Index</div>
+                    <div class="gauge">
+                        <div class="gauge__body">
+                            <div class="gauge__fill"></div>
+                            <div class="gauge__cover"></div>
+                        </div>
+                    </div>
+                    <div class="right-container-today-highlights-value">{{weatherService.todayHighlights.uvIndex}}</div>
+                </div>
+                <div class="right-container-today-highlights-card">
+                    <div class="right-container-today-highlights-card-title">Current Wind Status</div>
+                    <div class="wind-status"><img src="./../../assets/wind (1).png" alt="">
+                        <div class="wind-status-value">{{this.weatherService.todayHighlights.windSpeed}}</div><span
+                            class="wind-unit">km/h</span>
+                    </div>
+                    <div class="wind-summary">
+                        {{this.weatherService.todayHighlights.windSpeed < 1 ? "Calm" :
+                            this.weatherService.todayHighlights.windSpeed>= 1 &&
+                            this.weatherService.todayHighlights.windSpeed <= 5 ? "Light Air" :
+                                this.weatherService.todayHighlights.windSpeed>= 6 &&
+                                this.weatherService.todayHighlights.windSpeed <= 11 ? "Light Breeze" :
+                                    this.weatherService.todayHighlights.windSpeed>= 12 &&
+                                    this.weatherService.todayHighlights.windSpeed <= 19 ? "Gentle Breeze" :
+                                        this.weatherService.todayHighlights.windSpeed>= 20 &&
+                                        this.weatherService.todayHighlights.windSpeed <= 28 ? "Moderate Breeze" :
+                                            this.weatherService.todayHighlights.windSpeed>= 29 &&
+                                            this.weatherService.todayHighlights.windSpeed <= 38 ? "Fresh Breeze" :
+                                                this.weatherService.todayHighlights.windSpeed>= 39 &&
+                                                this.weatherService.todayHighlights.windSpeed <= 49 ? "Strong Breeze" :
+                                                    this.weatherService.todayHighlights.windSpeed>= 50 &&
+                                                    this.weatherService.todayHighlights.windSpeed <= 61 ? "Near Gale" :
+                                                        this.weatherService.todayHighlights.windSpeed>= 62 &&
+                                                        this.weatherService.todayHighlights.windSpeed <= 74 ? "Gale" :
+                                                            this.weatherService.todayHighlights.windSpeed>= 75 &&
+                                                            this.weatherService.todayHighlights.windSpeed <= 88
+                                                                ? "Strong Gale" :
+                                                                this.weatherService.todayHighlights.windSpeed>= 89 &&
+                                                                this.weatherService.todayHighlights.windSpeed <= 102
+                                                                    ? "Storm" :
+                                                                    this.weatherService.todayHighlights.windSpeed>= 103
+                                                                    &&
+                                                                    this.weatherService.todayHighlights.windSpeed <= 117
+                                                                        ? "Violent Storm" :
+                                                                        this.weatherService.todayHighlights.windSpeed>=
+                                                                        118 ? "Hurricane": "Normal"}}
+
+                                                                        <img src="./../../assets/thumbs-up.png" alt="">
+                    </div>
+                </div>
+                <div class="right-container-today-highlights-card">
+                    <div class="right-container-today-highlights-card-title">Sunrise & Sunset</div>
+                    <div class="sunrise-sunset-value">
+                        <div class="sunrise">
+                            <div class="sunrise-image"><img src="./../../assets/Weather conditions/sunrise.png" alt="">
+                            </div>
+                            <div class="sunrise-time">{{this.weatherService.todayHighlights.sunrise}} AM</div>
+                        </div>
+                        <div class="sunset">
+                            <div class="sunset-image"><img src="./../../assets/Weather conditions/sunset.png" alt="">
+                            </div>
+                            <div class="sunset-time">{{this.weatherService.todayHighlights.sunset}} PM</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-container-today-highlights-cards">
+                <div class="right-container-today-highlights-card">
+                    <div class="right-container-today-highlights-card-title">Rainfall (24h)</div>
+                    <div class="rainfall-status"><img src="./../../assets/rain.png" alt="">
+                        <div class="rainfall-status-value">{{this.weatherService.todayHighlights.rainfall}}</div>
+                        <span class="rainfall-unit">mm</span>
+                    </div>
+                    <div class="rainfall-summary">
+                        {{this.weatherService.todayHighlights.rainfall == 0 ? "No rain":
+                        this.weatherService.todayHighlights.rainfall < 0.5 ? "Slight" :
+                            this.weatherService.todayHighlights.rainfall>= 0.5 &&
+                            this.weatherService.todayHighlights.rainfall < 4 ? "Moderate" :
+                                this.weatherService.todayHighlights.rainfall>= 4 &&
+                                this.weatherService.todayHighlights.rainfall < 8 ? "Heavy" :
+                                    this.weatherService.todayHighlights.rainfall>= 8 ? "Very heavy" : "Normal"}}
+
+                                    <img src="./../../assets/thumbs-up.png" alt="">
+                    </div>
+                </div>
+                <div class="right-container-today-highlights-card">
+                    <div class="right-container-today-highlights-card-title">Min Temperature (24h)</div>
+                    <div class="min-temperature-status"> <img src="./../../assets/temperature-drop.png" alt="">
+                        <div class="min-temperature-status-value">
+                            {{this.weatherService.celsius == true ? this.weatherService.todayHighlights.minTemperature :
+                            this.weatherService.celsiusToFahrenheit(this.weatherService.todayHighlights.minTemperature)}}
+                        </div><span class="min-temperature-unit">°</span>
+                    </div>
+                    <div class="min-temperature-summary">
+                        {{this.weatherService.todayHighlights.minTemperature > 24 &&
+                        this.weatherService.todayHighlights.minTemperature < 33 ? "Optimal" : "Not optimal" }} <img
+                            src="./../../assets/thumbs-up.png" alt="">
+                    </div>
+                </div>
+                <div class="right-container-today-highlights-card">
+                    <div class="right-container-today-highlights-card-title">Max Temperature (24h)</div>
+                    <div class="max-temperature-status"> <img src="./../../assets/high-temperature.png" alt="">
+                        <div class="max-temperature-status-value">
+                            {{this.weatherService.celsius == true ? this.weatherService.todayHighlights.maxTemperature :
+                            this.weatherService.celsiusToFahrenheit(this.weatherService.todayHighlights.maxTemperature)}}
+                        </div><span class="max-temperature-unit">°</span>
+                    </div>
+                    <div class="max-temperature-summary">
+                        {{this.weatherService.todayHighlights.minTemperature > 24 &&
+                        this.weatherService.todayHighlights.minTemperature < 33 ? "Optimal" : "Not optimal" }} <img
+                            src="./../../assets/thumbs-up.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

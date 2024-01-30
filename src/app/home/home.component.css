@@ -1,0 +1,32 @@
+.home-container {
+    background-color: #d9d8fe75;
+    border: 3px solid #bebcfa75;
+    border-radius: 10px;
+    color: black;
+    margin-left: 3px;
+    font-family: 'Hind', sans-serif;
+    min-height: 900px;
+}
+
+.title {
+    font-size: large;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.content-text {
+    font-size: medium;
+    font-weight: 500;
+    margin-top: 40px;
+}
+
+.button {
+    margin-top: 10px;
+    font-family: 'Hind', sans-serif;
+    font-weight: bold;
+    font-size: medium;
+    width: 150px;
+    border: 3px solid #ccd4a4;
+    border-radius: 10px;
+    background-color: blanchedalmond;
+}
