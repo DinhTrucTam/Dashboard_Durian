@@ -1,7 +1,10 @@
 <div class="sensors-container">
     <h1 class="title">My Sensors</h1>
-    <mat-tab-group class="tabs" animationDuration="500ms">
-        <mat-tab label="LSN50v2-S31B">  
+    <mat-tab-group class="tabs" animationDuration="1000ms">
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <span class="custom-tab-label">LSN50v2-S31B</span>
+            </ng-template>
             <div class="card-container">
                 <!-- Cards for LSN50v2-S31B -->
                 <mat-card *ngFor="let information of lsn50v2S31BSensors" class="sensor-card">
@@ -19,6 +22,8 @@
                         <span class="numeric_values" *ngIf="information.title.includes('Humidity')">%</span>
 
                         <span class="numeric_values">{{ information.alarm_first }}</span>
+                        <span class="numeric_values" *ngIf="information.title.includes('Warning')"></span>
+
 
                         <span class="numeric_values">{{ information.battery_first }}</span>
                         <span class="numeric_values" *ngIf="information.title.includes('Battery')">%</span>
@@ -35,7 +40,10 @@
             </div>
         </mat-tab>
 
-        <mat-tab label="LSN50v2-8">
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <span class="custom-tab-label">LSN50v2-8</span>
+            </ng-template>
             <!-- Cards for LSN50v2-8 -->
             <div class="card-container">
                 <mat-card *ngFor="let information of lsn50v28Sensors" class="sensor-card">
@@ -69,7 +77,10 @@
             </div>
         </mat-tab>
 
-        <mat-tab label="LSE01-8">
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <span class="custom-tab-label">LSE01-8</span>
+            </ng-template>
             <!-- Cards for LSE01-8 -->
             <div class="card-container">
                 <mat-card *ngFor="let information of lse018Sensors" class="sensor-card">

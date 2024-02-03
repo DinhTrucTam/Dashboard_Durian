@@ -1,11 +1,36 @@
 /* Style for individual cards */
 .dashboard-container {
-  background-color: #d9d8fe75;
+  /* background-color: #d9d8fe75; */
   border: 3px solid #bebcfa75;
   border-radius: 10px;
   color: black;
   margin-left: 3px;
   min-height: 900px;
+  position: relative;
+}
+
+.dashboard-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./../../assets/pexels-jess-ho-17909867.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  border-radius: 10px;
+}
+
+.page-title {
+  font-family: 'Hind', sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  color: rgb(247, 255, 132);
+  position: relative;
+  z-index: 1;
 }
 
 .card-container {
@@ -21,16 +46,18 @@
   flex: 1 1 calc(15% - 20px);
   height: 90px;
   margin: 30px;
+  margin-top: -50px;
   border: 1px solid #C8C8C8;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0px 0px 1.5px 1.5px #C8C8C8;
+  opacity: 0.9;
 }
 
 .head-page-headers {
-  margin-left: 10px;
+  margin-left: 20px;
   margin-top: -14px;
   background-color: rgb(190, 243, 193);
-  width: 70px;
+  width: fit-content;
   display: flex;
   justify-content: center;
   /* Center the content horizontally */
@@ -54,6 +81,7 @@
   font-family: 'Hind', sans-serif;
   font-size: 20px;
   text-align: right;
+  font-weight: bold;
 }
 
 .data-information {
@@ -69,9 +97,10 @@
   margin-top: 40px;
   margin-bottom: 40px;
   border: 1px solid #C8C8C8;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0px 0px 1.5px 1.5px #C8C8C8;
   background-color: #f5f5f5;
+  opacity: 0.9;
   /* Ensure content doesn't overflow the card */
 }
 
@@ -161,13 +190,8 @@
   text-align: left;
 }
 
-.header-sub-content-weather {
-  margin-top: 15px;
-  font-family: 'Hind', sans-serif;
-  font-size: 12px;
-  font-weight: 300;
-  font-style: italic;
-  text-align: left;
+.weather-forecast-container {
+  opacity: 0.9;
 }
 
 .card-header-weather-forecast {
@@ -204,7 +228,7 @@
   flex-wrap: wrap;
   height: 600px;
   border: 1px solid #C8C8C8;
-  border-radius: 5px;
+  border-radius: 10px;
   box-shadow: 0px 0px 1.5px 1.5px #C8C8C8;
 }
 
@@ -218,8 +242,8 @@
 .right-container {
   flex: 7;
   background-color: #f5f5f5;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 .more-detail {
@@ -229,20 +253,16 @@
 }
 
 @media (max-width: 768px) {
-  .dashboard-card {
+  .dashboard-container {
     width: calc(100% - 20px);
-    /* Full width for smaller screens */
   }
 
   .card-header-weather-forecast {
     width: 100%;
-    /* Adjust width for responsiveness */
     margin: 0;
-    /* Remove margin */
   }
 
   .weather-container {
     margin: 0;
-    /* Remove margin */
   }
 }

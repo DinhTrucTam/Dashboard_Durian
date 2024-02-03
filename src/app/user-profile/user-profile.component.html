@@ -1,1 +1,78 @@
-<p>user-profile works!</p>
+<div class="userprofile-container">
+    <h1 class="title">User Profile</h1>
+    <div class="userprofile-content">
+        <mat-card class="left-card">
+            <mat-card-header class="left-card-header">
+                <img src="./../../assets/alarm.png" alt="user-avatar">
+            </mat-card-header>
+
+            <mat-card-content class="card-content">
+                <label mat-raised-button for="avatar-upload" class="btn-change-avatar">Choose</label>
+                <input type="file" id="avatar-upload" style="display: none;">
+                <div class="user-fullname">
+                    Đinh Trực Tâm
+                </div>
+            </mat-card-content>
+
+        </mat-card>
+
+        <mat-card class="right-card">
+            <mat-card-header class="right-card-header">
+                <div class="right-card-title">
+                    Edit your profile
+                </div>
+            </mat-card-header>
+
+            <mat-card-content class="right-card-content">
+                <div class="forms-container">
+                    <form class="form">
+                        <!-- Form fields for the first row -->
+                        <mat-form-field appearance="fill" class="form-field">
+                            <mat-label>Username</mat-label>
+                            <input matInput placeholder="Username">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill" class="form-field">
+                            <mat-label>Email</mat-label>
+                            <input matInput placeholder="Email">
+                        </mat-form-field>
+                    </form>
+
+
+                    <form class="form">
+                        <!-- Form fields for the second row -->
+                        <mat-form-field appearance="fill" class="form-field">
+                            <mat-label>First Name</mat-label>
+                            <input matInput placeholder="First Name">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="fill" class="form-field">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput placeholder="Last Name">
+                        </mat-form-field>
+                    </form>
+
+
+                    <form class="form">
+                        <!-- Form fields for the third row -->
+                        <mat-form-field appearance="fill" class="form-field-address">
+                            <mat-label>Address</mat-label>
+                            <input matInput placeholder="Address">
+                        </mat-form-field>
+                    </form>
+
+
+                    <form class="form">
+                        <!-- Form fields for the fourth row -->
+                        <mat-form-field appearance="fill" class="form-field-phase">
+                            <mat-label>Current phase of your farm</mat-label>
+                            <input matInput placeholder="Current phase">
+                        </mat-form-field>
+                    </form>
+                </div>
+
+                <button mat-raised-button class="btn-update-profile">Update Profile</button>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

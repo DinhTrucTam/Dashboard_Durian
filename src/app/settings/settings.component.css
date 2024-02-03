@@ -1,0 +1,9 @@
+.settings-container {
+    background-color: #d9d8fe75;
+    border: 3px solid #bebcfa75;
+    border-radius: 10px;
+    color: black;
+    margin-left: 3px;
+    font-family: 'Hind', sans-serif;
+    min-height: 900px;
+}

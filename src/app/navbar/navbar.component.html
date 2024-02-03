@@ -1,6 +1,6 @@
 <!--Top navbar-->
 <mat-toolbar class="mat-elevation-z7">
-    <button (click)="drawer.toggle()" mat-icon-button>
+    <button mat-icon-button>
         <mat-icon>menu</mat-icon>
     </button>
     <span class="title-text ">Monitoring website</span>
@@ -31,18 +31,12 @@
                 <mat-icon> message</mat-icon>
             </button>
         </mat-menu>
-
-        <!--About button-->
-        <button routerLink="/about" mat-raised-button color="#e4f296" class="toolbar-button">
-            <div class="toolbar-item">About</div>
-            <mat-icon>help_outline</mat-icon>
-        </button>
     </div>
 </mat-toolbar>
 
 
 <!--Side navbar-->
-<mat-drawer-container autosize>
+<mat-drawer-container autosize="">
     <!---side: Sidenav floats over the primary content, which is covered by a backdrop 
         - over: Sidenav pushes the primary content out of its way, also covering it with a backdrop
         - push: Sidenav appears side-by-side with the main content, shrinking the main content's width to make space for the sidenav-->
@@ -60,7 +54,7 @@
                 </mat-list-item>
 
                 <mat-list-item routerLink="/sensors" class="centered-list-item">
-                   <mat-icon class="icon-image">important_devices class="icon-image"</mat-icon>
+                    <mat-icon class="icon-image">important_devices class="icon-image"</mat-icon>
                     <div class="item-label">Sensors</div>
                 </mat-list-item>
 
@@ -70,7 +64,7 @@
                 </mat-list-item>
 
                 <mat-list-item routerLink="/user_profile" class="centered-list-item">
-                   <mat-icon class="icon-image">person</mat-icon>
+                    <mat-icon class="icon-image">person</mat-icon>
                     <div class="item-label">User Profile</div>
                 </mat-list-item>
 

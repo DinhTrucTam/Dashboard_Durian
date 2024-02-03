@@ -1,1 +1,89 @@
-<p>analysis works!</p>
+<div class="analysis-container">
+    <h1 class="title">Statistical Data</h1>
+    <mat-tab-group class="tabs" animationDuration="1000ms">
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <span class="custom-tab-label">Data History</span>
+            </ng-template>
+
+            <div class="card-container">
+                <!-- Card for Temperature -->
+                <mat-card class="statistical-card">
+                    <mat-card-header class="card-header">
+                        <mat-card-title>
+                            <div class="data-title">Temperature</div>
+                        </mat-card-title>
+                    </mat-card-header>
+                    <div class="chart-container">
+                        <canvasjs-chart [options]="chartOptions" [styles]="{width: '99%', height:'270px'}"
+                            (chartInstance)="getChartInstance($event)"></canvasjs-chart>
+                    </div>
+                </mat-card>
+
+                <!-- Card for Humidity -->
+                <mat-card class="statistical-card">
+                    <mat-card-header class="card-header">
+                        <mat-card-title>
+                            <div class="data-title">Humidity</div>
+                        </mat-card-title>
+                    </mat-card-header>
+                    <div class="chart-container">
+                        <canvasjs-chart [options]="chartOptions2" [styles]="{width: '99%', height:'270px'}"
+                            (chartInstance)="getChartInstance2($event)"></canvasjs-chart>
+                    </div>
+                </mat-card>
+
+                <!-- Card for Illuminance -->
+                <mat-card class="statistical-card">
+                    <mat-card-header class="card-header">
+                        <mat-card-title>
+                            <div class="data-title">Illuminance</div>
+                        </mat-card-title>
+                    </mat-card-header>
+                    <div class="chart-container">
+                        <canvasjs-chart [options]="chartOptions3" [styles]="{width: '99%', height:'270px'}"
+                            (chartInstance)="getChartInstance3($event)"></canvasjs-chart>
+                    </div>
+                </mat-card>
+
+                <!-- Card for Soil Temperature -->
+                <mat-card class="statistical-card">
+                    <mat-card-header class="card-header">
+                        <mat-card-title>
+                            <div class="data-title">Soil Temperature</div>
+                        </mat-card-title>
+                    </mat-card-header>
+                    <div class="chart-container">
+                        <canvasjs-chart [options]="chartOptions4" [styles]="{width: '99%', height:'270px'}"
+                            (chartInstance)="getChartInstance4($event)"></canvasjs-chart>
+                    </div>
+                </mat-card>
+
+                <!-- Card for Moisture -->
+                <mat-card class="statistical-card">
+                    <mat-card-header class="card-header">
+                        <mat-card-title>
+                            <div class="data-title">Soil Moisture</div>
+                        </mat-card-title>
+                    </mat-card-header>
+                    <div class="chart-container">
+                        <canvasjs-chart [options]="chartOptions5" [styles]="{width: '99%', height:'270px'}"
+                            (chartInstance)="getChartInstance5($event)"></canvasjs-chart>
+                    </div>
+                </mat-card>
+                <!-- Card for EC -->
+                <mat-card class="statistical-card">
+                    <mat-card-header class="card-header">
+                        <mat-card-title>
+                            <div class="data-title">Soil Electrical Conductivity</div>
+                        </mat-card-title>
+                    </mat-card-header>
+                    <div class="chart-container">
+                        <canvasjs-chart [options]="chartOptions6" [styles]="{width: '99%', height:'270px'}"
+                            (chartInstance)="getChartInstance6($event)"></canvasjs-chart>
+                    </div>
+                </mat-card>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

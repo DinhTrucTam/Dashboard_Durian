@@ -4,42 +4,45 @@
         <div class="search-input"><input type="text" placeholder="Search for places..."></div>
         <div class="location-icon"><fa-icon class="fa-xs" [icon]="faLocation"></fa-icon></div>
     </div>
+
     <div class="left-container-databox">
         <div class="left-container-temp-data">
             <div class="left-container-temp-image">
-                <img src="./../../assets/Weather conditions/Sunny.png" alt="">
+                <img src={{this.weatherService.temperatureData.summaryImage}} alt="summaryImage">
             </div>
             <div class="left-container-temp-value">
-                12<sup>°C</sup>
+                {{this.weatherService.celsius == true ? this.weatherService.temperatureData.temperature :
+                this.weatherService.celsiusToFahrenheit(this.weatherService.temperatureData.temperature)}}<sup>{{this.weatherService.celsius
+                    == true ? "°C" : "°F" }}</sup>
             </div>
             <div class="left-container-day-time">
-                Sunday, <span>12:00</span>
+                {{this.weatherService.temperatureData.day}}, <span>{{this.weatherService.temperatureData.time}}</span>
             </div>
         </div>
 
-        <div class="dividing-line">
-
-        </div>
+        <div class="dividing-line"></div>
 
         <div class="left-container-other-details">
             <div class="left-container-temp-summary">
-                <div class="left-container-temp-summary-phrase-image"><fa-icon class="fa-xs" [icon]="faSun"></fa-icon></div>
-                <div class="left-container-temp-summary-value">Mostly Sunny</div>
+                <div class="left-container-temp-summary-phrase-image"><fa-icon class="fa-xs" [icon]="faCloud"></fa-icon>
+                </div>
+                <div class="left-container-temp-summary-value">{{this.weatherService.temperatureData.summaryPhrase}}
+                </div>
             </div>
             <div class="left-container-cloud-status">
                 <div class="left-container-cloud-status-image">
-                    <fa-icon class="fa-xs" [icon]="faCloud"></fa-icon>
+                    <fa-icon class="fa-xs" [icon]="faCloudRain"></fa-icon>
                 </div>
                 <div class="left-container-cloud-status-value">
-                    Cloud - 70%
+                    Rain - {{this.weatherService.temperatureData.rainPercent}}
                 </div>
             </div>
             <div class="left-container-location-details">
                 <div class="left-container-location-image">
                     <img src="./../../assets/TP.HCM.png" alt="">
                 </div>
-                <div class="left-container-location-name">HCMC, Vietnam</div>
+                <div class="left-container-location-name">{{this.weatherService.temperatureData.location}}
+                </div>
             </div>
         </div>
     </div>
-</div>

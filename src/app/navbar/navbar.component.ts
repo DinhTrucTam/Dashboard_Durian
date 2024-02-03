@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
 import { MatToolbarModule } from "@angular/material/toolbar";
 
 @Component({
@@ -8,7 +9,6 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 })
 
 export class NavbarComponent {
-
     // visibility of badge
     badgevisible = false;
     badgevisibility() {

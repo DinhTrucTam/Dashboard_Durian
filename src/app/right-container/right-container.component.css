@@ -240,7 +240,7 @@
 }
 
 .gauge {
-    margin-top: -15px;
+    margin-top: -40px;
     margin-bottom: -18px;
     flex: 2;
     width: 85%;
@@ -298,6 +298,15 @@
     font-size: xx-large;
     font-weight: 500;
     margin-bottom: 30px;
+    margin-top: -15px;
+    z-index: 1;
+}
+
+.right-container-today-highlights-description {
+    flex: 1;
+    font-size: small;
+    margin-top: -35px;
+    font-weight: bold;
     z-index: 1;
 }
 
@@ -362,9 +371,9 @@
 }
 
 .sunrise-image img {
-    width: 30px;
+    width: 60px;
     height: 30px;
-    margin-left: -5px;
+    margin-left: 20px;
 }
 
 .sunrise-time {
@@ -387,9 +396,9 @@
 }
 
 .sunset-image img {
-    width: 30px;
+    width: 60px;
     height: 30px;
-    margin-left: -5px;
+    margin-left: 20px;
 }
 
 .sunset-time {

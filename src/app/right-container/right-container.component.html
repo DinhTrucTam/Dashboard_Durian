@@ -172,6 +172,11 @@
                         </div>
                     </div>
                     <div class="right-container-today-highlights-value">{{weatherService.todayHighlights.uvIndex}}</div>
+                    <div class="right-container-today-highlights-description">
+                        {{weatherService.todayHighlights.uvDescription}}</div>
+                    <!-- <div class="right-container-today-highlights-value">10</div>
+                    <div class="right-container-today-highlights-description">
+                        High</div> -->
                 </div>
                 <div class="right-container-today-highlights-card">
                     <div class="right-container-today-highlights-card-title">Current Wind Status</div>
@@ -210,7 +215,8 @@
                                                                         this.weatherService.todayHighlights.windSpeed>=
                                                                         118 ? "Hurricane": "Normal"}}
 
-                                                                        <img src="./../../assets/thumbs-up.png" alt="">
+                                                                        <img src="./../../assets/{{ weatherService.todayHighlights.windSpeed <= 39 ? 'thumbs-up.png' : 'negative-vote.png' }}"
+                                                                            alt="">
                     </div>
                 </div>
                 <div class="right-container-today-highlights-card">
@@ -231,7 +237,7 @@
             </div>
             <div class="right-container-today-highlights-cards">
                 <div class="right-container-today-highlights-card">
-                    <div class="right-container-today-highlights-card-title">Rainfall (24h)</div>
+                    <div class="right-container-today-highlights-card-title">Total Rainfall (24h)</div>
                     <div class="rainfall-status"><img src="./../../assets/rain.png" alt="">
                         <div class="rainfall-status-value">{{this.weatherService.todayHighlights.rainfall}}</div>
                         <span class="rainfall-unit">mm</span>
@@ -245,7 +251,8 @@
                                 this.weatherService.todayHighlights.rainfall < 8 ? "Heavy" :
                                     this.weatherService.todayHighlights.rainfall>= 8 ? "Very heavy" : "Normal"}}
 
-                                    <img src="./../../assets/thumbs-up.png" alt="">
+                                    <img src="./../../assets/{{ weatherService.todayHighlights.rainfall < 4 ? 'thumbs-up.png' : 'negative-vote.png' }}"
+                                        alt="">
                     </div>
                 </div>
                 <div class="right-container-today-highlights-card">
@@ -257,9 +264,10 @@
                         </div><span class="min-temperature-unit">°</span>
                     </div>
                     <div class="min-temperature-summary">
-                        {{this.weatherService.todayHighlights.minTemperature > 24 &&
-                        this.weatherService.todayHighlights.minTemperature < 33 ? "Optimal" : "Not optimal" }} <img
-                            src="./../../assets/thumbs-up.png" alt="">
+                        {{this.weatherService.todayHighlights.minTemperature > 20 &&
+                        this.weatherService.todayHighlights.maxTemperature < 40 ? "Optimal" : "Not optimal" }} <img
+                            src="./../../assets/{{ (weatherService.todayHighlights.minTemperature > 20 && weatherService.todayHighlights.maxTemperature < 40) ? 'thumbs-up.png' : 'negative-vote.png' }}"
+                            alt="">
                     </div>
                 </div>
                 <div class="right-container-today-highlights-card">
@@ -271,9 +279,10 @@
                         </div><span class="max-temperature-unit">°</span>
                     </div>
                     <div class="max-temperature-summary">
-                        {{this.weatherService.todayHighlights.minTemperature > 24 &&
-                        this.weatherService.todayHighlights.minTemperature < 33 ? "Optimal" : "Not optimal" }} <img
-                            src="./../../assets/thumbs-up.png" alt="">
+                        {{this.weatherService.todayHighlights.minTemperature > 20 &&
+                        this.weatherService.todayHighlights.maxTemperature < 40 ? "Optimal" : "Not optimal" }} <img
+                            src="./../../assets/{{weatherService.todayHighlights.minTemperature > 20 && weatherService.todayHighlights.maxTemperature < 40 ? 'thumbs-up.png' : 'negative-vote.png' }}"
+                            alt="">
                     </div>
                 </div>
             </div>

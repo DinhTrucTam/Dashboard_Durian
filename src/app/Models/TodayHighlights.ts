@@ -1,4 +1,5 @@
 export class TodayHighlights {
+    id: string;
     uvIndex: number;
     uvDescription: string;
     windSpeed: number;

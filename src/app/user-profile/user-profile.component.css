@@ -1,0 +1,139 @@
+.userprofile-container {
+    background-color: #d9d8fe75;
+    border: 3px solid #bebcfa75;
+    border-radius: 10px;
+    color: black;
+    margin-left: 3px;
+    font-family: 'Hind', sans-serif;
+    min-height: 900px;
+}
+
+.title {
+    font-family: 'Hind', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: darkblue;
+    position: relative;
+    z-index: 1;
+}
+
+.userprofile-content {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    margin-top: -50px;
+}
+
+.left-card {
+    flex: 0 0 30%;
+    height: 300px;
+    padding: 0;
+    align-items: center;
+    border-radius: 40px;
+}
+
+.left-card-header {
+    margin-top: 20px;
+}
+
+.left-card-header img {
+    border-radius: 60px;
+    width: 150px;
+    height: 150px;
+}
+
+.card-content {
+    margin-top: 10px;
+}
+
+.btn-change-avatar {
+    font-family: 'Hind', sans-serif;
+    font-weight: bold;
+    font-size: medium;
+    display: inline-block;
+    padding: 8px 20px;
+    border: 3px solid #ccd4a4;
+    background-color: blanchedalmond;
+    border-radius: 10px;
+    cursor: pointer;
+    color: black;
+    height: fit-content;
+}
+
+/* Optional: Add hover effect */
+.btn-change-avatar:hover {
+    background-color: rgb(213, 226, 255)
+}
+
+.user-fullname {
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 25px;
+    font-family: 'Hind', sans-serif;
+}
+
+.right-card {
+    flex: 0 0 60%;
+    /* Right card takes up 60% of the available space */
+    margin-left: 20px;
+    height: 500px;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right-card-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FBEEC1;
+    width: 65%;
+    align-self: center;
+    height: 10%;
+    margin-top: -20px;
+    box-shadow: 0px 0px 2px 2px rgba(52, 63, 69, 0.2);
+    border: 3px solid #d5b540;
+    border-radius: 10px;
+}
+
+.right-card-title {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Hind', sans-serif;
+    color: rgb(0, 0, 0);
+    margin-top: -15px;
+}
+
+.right-card-content {
+    margin-top: 50px;
+}
+
+.forms-container {
+    margin-top: -25px;
+}
+
+.form-field {
+    padding: 10px;
+}
+
+.form-field-address {
+    margin-top: 5px;
+    width: 95%;
+}
+
+.form-field-phase {
+    margin-top: 10px;
+    width: 95%;
+}
+
+button.btn-update-profile {
+    margin-top: 10px;
+    font-family: 'Hind', sans-serif;
+    font-weight: bold;
+    font-size: medium;
+    width: 170px;
+    border: 3px solid #ccd4a4;
+    border-radius: 10px;
+    background-color: blanchedalmond;
+}
