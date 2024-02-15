@@ -107,3 +107,9 @@
 .centered-list-item:hover {
     background-color: #ccd4a4;
 }
+
+.message_drawer {
+    width: 300px;
+    background-color: #bebcfa75;
+    padding: 20px;
+}

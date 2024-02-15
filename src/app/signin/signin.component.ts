@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators} from '@angular/forms'
+import { Router } from '@angular/router';
+import { AuthService } from '../_login_services/auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -8,24 +9,25 @@ import { FormGroup, FormBuilder, Validators} from '@angular/forms'
 })
 export class SigninComponent implements OnInit {
 
-  hide: boolean = false;
+  constructor(private router: Router, private authService: AuthService) { }
 
-  constructor(private fb: FormBuilder) {
-  }
+  username: string;
+  password: string;
+  verified: boolean = false;
 
   ngOnInit() {
   }
 
-  loginForm: FormGroup = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(6)]]
-  })
-
-
-  onLogin() {
-    if (!this.loginForm.valid) {
-      return;
+  login(): void {
+    if (this.username == 'admin' && this.password == 'admin') {
+      this.verified = true;
+      this.authService.setVerified(this.verified);
+      this.router.navigate(["dashboard"]);
     }
-    console.log(this.loginForm.value);
+    else {
+      this.verified = false;
+      this.authService.setVerified(this.verified);
+      alert("Invalid credentials");
+    }
   }
 }

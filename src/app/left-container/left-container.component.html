@@ -12,8 +12,8 @@
             </div>
             <div class="left-container-temp-value">
                 {{this.weatherService.celsius == true ? this.weatherService.temperatureData.temperature :
-                this.weatherService.celsiusToFahrenheit(this.weatherService.temperatureData.temperature)}}<sup>{{this.weatherService.celsius
-                    == true ? "°C" : "°F" }}</sup>
+                this.weatherService.celsiusToFahrenheit(this.weatherService.temperatureData.temperature)}}<span>{{this.weatherService.celsius
+                    == true ? "°C" : "°F" }}</span>
             </div>
             <div class="left-container-day-time">
                 {{this.weatherService.temperatureData.day}}, <span>{{this.weatherService.temperatureData.time}}</span>

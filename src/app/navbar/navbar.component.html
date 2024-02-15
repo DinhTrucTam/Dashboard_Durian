@@ -1,6 +1,6 @@
 <!--Top navbar-->
 <mat-toolbar class="mat-elevation-z7">
-    <button mat-icon-button>
+    <button mat-icon-button (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
     </button>
     <span class="title-text ">Monitoring website</span>
@@ -12,7 +12,7 @@
         <!--Contact button-->
         <button [matMenuTriggerFor]="lv1contact" mat-raised-button color="#e4f296" class="toolbar-button">
             <div class="toolbar-item">Contact</div>
-            <mat-icon> forum</mat-icon>
+            <mat-icon>forum</mat-icon>
         </button>
 
         <!--Notifications button-->
@@ -26,9 +26,9 @@
             </button>
 
             <!--Messages button-->
-            <button mat-menu-item>
-                <span class="menu-text">Message</span>
-                <mat-icon> message</mat-icon>
+            <button mat-menu-item (click)="messages.toggle()">
+                <span class="menu-text">Messages</span>
+                <mat-icon>message</mat-icon>
             </button>
         </mat-menu>
     </div>
@@ -43,41 +43,58 @@
     <mat-drawer #drawer opened="true" mode="side" position="start" class="centered-items">
         <div>
             <mat-nav-list>
-                <mat-list-item routerLink="/home" class="centered-list-item">
-                    <mat-icon class="icon-image">home</mat-icon>
-                    <div class="item-label">Home</div>
-                </mat-list-item>
+                <ng-container *ngIf="this.auth.isAuthenticated(); then authenticated; else notAuthenticated">
 
-                <mat-list-item routerLink="/dashboard" class="centered-list-item">
-                    <mat-icon class="icon-image">dashboard</mat-icon>
-                    <div class="item-label">Dashboard</div>
-                </mat-list-item>
+                </ng-container>
+                <ng-template #notAuthenticated>
+                    <mat-list-item routerLink="/home" class="centered-list-item">
+                        <mat-icon class="icon-image">home</mat-icon>
+                        <div class="item-label">Home</div>
+                    </mat-list-item>
+                </ng-template>
 
-                <mat-list-item routerLink="/sensors" class="centered-list-item">
-                    <mat-icon class="icon-image">important_devices class="icon-image"</mat-icon>
-                    <div class="item-label">Sensors</div>
-                </mat-list-item>
+                <ng-template #authenticated>
+                    <mat-list-item routerLink="/dashboard" class="centered-list-item">
+                        <mat-icon class="icon-image">dashboard</mat-icon>
+                        <div class="item-label">Dashboard</div>
+                    </mat-list-item>
 
-                <mat-list-item routerLink="/analysis" class="centered-list-item">
-                    <mat-icon class="icon-image">assessment</mat-icon>
-                    <div class="item-label">Analysis</div>
-                </mat-list-item>
+                    <mat-list-item routerLink="/sensors" class="centered-list-item">
+                        <mat-icon class="icon-image">important_devices class="icon-image"</mat-icon>
+                        <div class="item-label">Sensors</div>
+                    </mat-list-item>
 
-                <mat-list-item routerLink="/user_profile" class="centered-list-item">
-                    <mat-icon class="icon-image">person</mat-icon>
-                    <div class="item-label">User Profile</div>
-                </mat-list-item>
+                    <mat-list-item routerLink="/analysis" class="centered-list-item">
+                        <mat-icon class="icon-image">assessment</mat-icon>
+                        <div class="item-label">Analysis</div>
+                    </mat-list-item>
 
-                <mat-list-item routerLink="/settings" class="centered-list-item">
+                    <mat-list-item routerLink="/user_profile" class="centered-list-item">
+                        <mat-icon class="icon-image">person</mat-icon>
+                        <div class="item-label">User Profile</div>
+                    </mat-list-item>
+                </ng-template>
+
+                <!-- <mat-list-item routerLink="/settings" class="centered-list-item">
                     <mat-icon class="icon-image">settings</mat-icon>
                     <div class="item-label">Settings</div>
-                </mat-list-item>
+                </mat-list-item> -->
             </mat-nav-list>
         </div>
     </mat-drawer>
+
+    <!--Drawer for Notifications-->
+    <mat-drawer #messages opened="false" mode="side" position="end" class="message_drawer"
+        style="transform: none;visibility: visible;border-radius: 10px; margin-left: 10px;">
+        <div>
+            Messages content
+        </div>
+    </mat-drawer>
+
     <mat-drawer-content>
-        <div style="text-align: center; min-height: 900px;">
+        <div style="text-align: center; min-height: 900px; margin-right: 2px;">
             <router-outlet></router-outlet>
         </div>
     </mat-drawer-content>
+
 </mat-drawer-container>

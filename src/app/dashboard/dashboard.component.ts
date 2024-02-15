@@ -1,13 +1,14 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
+import { AuthService } from '../_login_services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   // private breakpointObserver = inject(BreakpointObserver);
 
   // /** Based on the screen size, switch from standard to one column per row */
@@ -61,4 +62,9 @@ export class DashboardComponent {
     { title: 'Moisture', moist: '70', imageUrl: "assets/hydrated-skin.gif" },
     { title: 'EC', EC: '200', imageUrl: "assets/electricity.gif" },
   ]
+
+  constructor(private auth: AuthService) { }
+  user = { localId: "someid", displayName: "somename" };
+  ngOnInit(): void {
+  }
 }

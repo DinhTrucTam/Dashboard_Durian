@@ -33,6 +33,17 @@
   z-index: 1;
 }
 
+.button {
+  font-family: 'Hind', sans-serif;
+  font-weight: bold;
+  font-size: large;
+  width: fit-content;
+  height: 45px;
+  border: 3px solid #ccd4a4;
+  border-radius: 10px;
+  background-color: blanchedalmond;
+}
+
 .card-container {
   display: flex;
   flex-direction: row;
@@ -46,7 +57,6 @@
   flex: 1 1 calc(15% - 20px);
   height: 90px;
   margin: 30px;
-  margin-top: -50px;
   border: 1px solid #C8C8C8;
   border-radius: 10px;
   box-shadow: 0px 0px 1.5px 1.5px #C8C8C8;

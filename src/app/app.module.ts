@@ -13,6 +13,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -38,11 +39,11 @@ import { LeftContainerComponent } from './left-container/left-container.componen
 import { RightContainerComponent } from './right-container/right-container.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
 import { HttpClientModule } from '@angular/common/http';
-
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,9 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
     MatTabsModule,
     FontAwesomeModule,
     HttpClientModule,
-    CanvasJSAngularChartsModule
+    CanvasJSAngularChartsModule,
+    MatProgressSpinnerModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

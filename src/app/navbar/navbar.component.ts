@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { MatDrawer } from '@angular/material/sidenav';
-import { MatToolbarModule } from "@angular/material/toolbar";
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../_login_services/auth.service';
+import { SigninComponent } from '../signin/signin.component';
 
 @Component({
     selector: 'app-navbar',
@@ -8,10 +8,14 @@ import { MatToolbarModule } from "@angular/material/toolbar";
     styleUrls: ['./navbar.component.css']
 })
 
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
     // visibility of badge
     badgevisible = false;
     badgevisibility() {
         this.badgevisible = true;
+    }
+    constructor(public auth: AuthService) { }
+
+    ngOnInit(): void {
     }
 }

@@ -25,7 +25,7 @@
 }
 
 .title {
-    margin-top: 75px;
+    margin-top: 150px;
     font-family: 'Hind', sans-serif;
     font-size: 30px;
     font-weight: bold;
@@ -48,19 +48,34 @@
     font-family: 'Hind', sans-serif;
     font-weight: bold;
     font-size: medium;
-    width: 150px;
+    width: 200px;
+    height: 80px;
     border: 3px solid #ccd4a4;
     border-radius: 10px;
     background-color: blanchedalmond;
+    font-size: large;
+}
+
+.contact-text {
+    font-family: 'Hind', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    position: absolute;
+    bottom: 50px;
+    /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
 }
 
 .content-text-contact {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
     font-family: 'Hind', sans-serif;
     font-weight: bold;
     font-size: 20px;
-    position: relative;
+    position: absolute;
+    bottom: 20px;
+    /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1;
 }
