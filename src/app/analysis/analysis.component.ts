@@ -170,6 +170,6 @@ export class AnalysisComponent {
     this.chart4.render();
     this.chart5.render();
     this.chart6.render();
-    setTimeout(this.updateChart, 1000); //New value updated every 1 second
+    setTimeout(this.updateChart, 1000);
   }
 }
