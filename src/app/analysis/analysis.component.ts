@@ -25,99 +25,100 @@ export class AnalysisComponent {
   chart6: any;
 
   chartOptions = {
-    // exportEnabled: true,
-    // title: {
-    //   text: "Angular Dynamic Chart"
-    // },
     data: [{
       type: "line",
       dataPoints: this.dps
-    }]
+    }],
+    axisX: {
+      labelFormatter: function (e) {
+        return "";
+      }
+    }
   }
 
   chartOptions2 = {
-    // exportEnabled: true,
-    // title: {
-    //   text: "Angular Dynamic Chart"
-    // },
     data: [{
       type: "line",
       dataPoints: this.dps2
-    }]
+    }],
+    axisX: {
+      labelFormatter: function (e) {
+        return "";
+      }
+    }
   }
 
   chartOptions3 = {
-    // exportEnabled: true,
-    // title: {
-    //   text: "Angular Dynamic Chart"
-    // },
     data: [{
       type: "line",
       dataPoints: this.dps3
-    }]
+    }],
+    axisX: {
+      labelFormatter: function (e) {
+        return "";
+      }
+    }
   }
 
   chartOptions4 = {
-    // exportEnabled: true,
-    // title: {
-    //   text: "Angular Dynamic Chart"
-    // },
     data: [{
       type: "line",
       dataPoints: this.dps4
-    }]
+    }],
+    axisX: {
+      labelFormatter: function (e) {
+        return "";
+      }
+    }
   }
 
   chartOptions5 = {
-    // exportEnabled: true,
-    // title: {
-    //   text: "Angular Dynamic Chart"
-    // },
     data: [{
       type: "line",
       dataPoints: this.dps5
-    }]
+    }],
+    axisX: {
+      labelFormatter: function (e) {
+        return "";
+      }
+    }
   }
 
   chartOptions6 = {
-    // exportEnabled: true,
-    // title: {
-    //   text: "Angular Dynamic Chart"
-    // },
     data: [{
       type: "line",
       dataPoints: this.dps6
-    }]
+    }],
+    axisX: {
+      labelFormatter: function (e) {
+        return "a";
+      }
+    }
   }
 
   getChartInstance(chart: object) {
     this.chart = chart;
-    setTimeout(this.updateChart, 1000); //Time series updated every 1 second
+    setTimeout(this.updateChart, 1000);
   }
 
   getChartInstance2(chart: object) {
     this.chart2 = chart;
-    // setTimeout(this.updateChart, 1000); //Time series updated every 1 second
   }
 
   getChartInstance3(chart: object) {
     this.chart3 = chart;
-    // setTimeout(this.updateChart, 1000); //Time series updated every 1 second
   }
 
   getChartInstance4(chart: object) {
     this.chart4 = chart;
-    // setTimeout(this.updateChart, 1000); //Time series updated every 1 second
   }
 
   getChartInstance5(chart: object) {
     this.chart5 = chart;
-    // setTimeout(this.updateChart, 1000); //Time series updated every 1 second
   }
 
   getChartInstance6(chart: object) {
     this.chart6 = chart;
-    // setTimeout(this.updateChart, 1000); //Time series updated every 1 second
   }
 
   updateChart = () => {
@@ -169,6 +170,6 @@ export class AnalysisComponent {
     this.chart4.render();
     this.chart5.render();
     this.chart6.render();
-    setTimeout(this.updateChart, 1000); //New value updated every 1 second
+    setTimeout(this.updateChart, 1000);
   }
 }

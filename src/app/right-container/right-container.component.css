@@ -349,7 +349,7 @@
     width: 15px;
     height: 15px;
     margin-left: 3px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 
 .sunrise-sunset-value {
@@ -447,7 +447,7 @@
     width: 15px;
     height: 15px;
     margin-left: 3px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 
 .min-temperature-status {
@@ -486,7 +486,7 @@
     width: 15px;
     height: 15px;
     margin-left: 3px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 
 .max-temperature-status {
@@ -525,5 +525,5 @@
     width: 15px;
     height: 15px;
     margin-left: 3px;
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }

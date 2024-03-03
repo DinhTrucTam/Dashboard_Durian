@@ -44,6 +44,8 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -84,6 +86,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTabsModule,
     FontAwesomeModule,
     HttpClientModule,
+    NgbModule,
     CanvasJSAngularChartsModule,
     MatProgressSpinnerModule,
     MatDialogModule

@@ -71,6 +71,11 @@
     color: rgb(0, 0, 0);
 }
 
+.statistical-numbers{
+    display: flex;
+    text-align: left;
+}
+
 .chart-container {
     margin-top: 10px;
     margin-bottom: -10px;

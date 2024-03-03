@@ -1,13 +1,11 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LocationDetails } from '../Models/LocationDetails';
 import { WeatherDetails } from '../Models/WeatherDetails';
 import { TemperatureData } from '../Models/TemperatureData';
 import { TodayData } from '../Models/TodayData';
 import { WeekData } from '../Models/WeekData';
 import { TodayHighlights } from '../Models/TodayHighlights';
 import { Observable, timer } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 import { EnvironmentVariables } from '../Environment/EnvironmentVariables';
 
 @Injectable({
