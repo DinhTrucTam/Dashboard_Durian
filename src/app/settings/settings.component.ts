@@ -1,26 +1,19 @@
-import { Component } from '@angular/core';
-import { AfterViewInit, OnInit, ViewChild } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ChatService } from '../Services/chat';
-import { SigninComponent } from '../signin/signin.component';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.css']
+  styleUrls: ['./settings.component.css'],
 })
 export class SettingsComponent implements OnInit, AfterViewInit {
-  // @ViewChild('popup', { static: false }) popup: any;
-
-  public signinCheck: SigninComponent;
-
   public roomId: string;
   public messageText: string;
-  public messageArray: { user: string, message: string }[] = [];
+  public messageArray: { user: string; message: string }[] = [];
   private storageArray = [];
 
   public showScreen = false;
-  public phone: string;
   public currentUser;
   public selectedUser;
 
@@ -28,106 +21,90 @@ export class SettingsComponent implements OnInit, AfterViewInit {
     {
       id: 1,
       name: 'Admin',
-      phone: 'admin@gmail.com',
+      email: 'admin@gmail.com',
       image: 'assets/admin.png',
       roomId: {
-        2: 'room-1',
-        3: 'room-2',
-        4: 'room-3'
-      }
+        1: 'room-1',
+      },
     },
     {
       id: 2,
       name: 'User 1',
-      phone: '9876543210',
+      email: '111',
       image: 'assets/farmer.png',
       roomId: {
         1: 'room-1',
-        3: 'room-4',
-        4: 'room-5'
-      }
+      },
     },
-    {
-      id: 3,
-      name: 'Albert Flores',
-      phone: '9988776655',
-      image: 'assets/user/user-3.png',
-      roomId: {
-        1: 'room-2',
-        2: 'room-4',
-        4: 'room-6'
-      }
-    },
-    {
-      id: 4,
-      name: 'Dianne Russell',
-      phone: '9876556789',
-      image: 'assets/user/user-4.png',
-      roomId: {
-        1: 'room-3',
-        2: 'room-5',
-        3: 'room-6'
-      }
-    }
   ];
 
   constructor(
-    private modalService: NgbModal,
-    private chatService: ChatService
-  ) {
-  }
+    private chatService: ChatService,
+    private sharedService: SharedService
+  ) {}
 
   ngOnInit(): void {
-    this.chatService.getMessage()
-      .subscribe((data: { user: string, room: string, message: string }) => {
-        // this.messageArray.push(data);
+    this.sharedService.currentUsername.subscribe((username) => {
+      console.log('shared service', username);
+      this.currentUser = this.userList.find(
+        (user) => user.email === username.toString()
+      );
+      console.log('current user', this.currentUser);
+    });
+    this.chatService
+      .getMessage()
+      .subscribe((data: { user: string; room: string; message: string }) => {
         if (this.roomId) {
           setTimeout(() => {
             this.storageArray = this.chatService.getStorage();
-            const storeIndex = this.storageArray
-              .findIndex((storage) => storage.roomId === this.roomId);
-            this.messageArray = this.storageArray[storeIndex].chats;
+            const storeIndex = this.storageArray.findIndex(
+              (storage) => storage.roomId === this.roomId
+            );
+            console.log(storeIndex);
+            this.messageArray = this.storageArray[storeIndex]?.chats || [];
           }, 500);
         }
       });
   }
 
   ngAfterViewInit(): void {
-    // this.openPopup(this.popup);
+    // Additional initialization if needed
   }
 
-  // openPopup(content: any): void {
-  //   this.modalService.open(content, { backdrop: 'static', centered: true });
-  // }
+  selectUserHandler(email: string): void {
+    console.log('Selected User Email:', email);
+    console.log('Current User:', this.currentUser);
 
-  login(dismiss: any): void {
-    this.currentUser = this.userList.find(user => user.phone === this.phone.toString());
-    this.userList = this.userList.filter((user) => user.phone !== this.phone.toString());
+    this.selectedUser = this.userList.find((user) => user.email === email);
 
-    if (this.currentUser) {
-      this.showScreen = true;
-      console.log(this.currentUser);
-      dismiss();
+    console.log('Selected User Room IDs:', this.selectedUser?.roomId);
+    console.log('Current User ID:', this.currentUser?.id);
+
+    if (this.selectedUser && this.currentUser) {
+      this.roomId = this.selectedUser.roomId[this.currentUser.id];
+      console.log('Resolved Room ID:', this.roomId);
+
+      this.messageArray = [];
+
+      this.storageArray = this.chatService.getStorage();
+      console.log('Storage Array:', this.storageArray);
+
+      const storeIndex = this.storageArray.findIndex(
+        (storage) => storage.roomId === this.roomId
+      );
+      console.log('Store Index:', storeIndex);
+
+      if (storeIndex > -1) {
+        this.messageArray = this.storageArray[storeIndex]?.chats || [];
+        console.log('Messages in the Room:', this.messageArray);
+      }
+
+      this.join(this.currentUser.name, this.roomId);
     }
-  }
-
-  selectUserHandler(phone: string): void {
-    this.selectedUser = this.userList.find(user => user.phone === phone);
-    this.roomId = this.selectedUser.roomId[this.currentUser.id];
-    this.messageArray = [];
-
-    this.storageArray = this.chatService.getStorage();
-    const storeIndex = this.storageArray
-      .findIndex((storage) => storage.roomId === this.roomId);
-
-    if (storeIndex > -1) {
-      this.messageArray = this.storageArray[storeIndex].chats;
-    }
-
-    this.join(this.currentUser.name, this.roomId);
   }
 
   join(username: string, roomId: string): void {
+    console.log(username, roomId);
     this.chatService.joinRoom({ user: username, room: roomId });
   }
 
@@ -135,25 +112,28 @@ export class SettingsComponent implements OnInit, AfterViewInit {
     this.chatService.sendMessage({
       user: this.currentUser.name,
       room: this.roomId,
-      message: this.messageText
+      message: this.messageText,
     });
 
     this.storageArray = this.chatService.getStorage();
-    const storeIndex = this.storageArray
-      .findIndex((storage) => storage.roomId === this.roomId);
+    const storeIndex = this.storageArray.findIndex(
+      (storage) => storage.roomId === this.roomId
+    );
 
     if (storeIndex > -1) {
-      this.storageArray[storeIndex].chats.push({
+      this.storageArray[storeIndex]?.chats.push({
         user: this.currentUser.name,
-        message: this.messageText
+        message: this.messageText,
       });
     } else {
       const updateStorage = {
         roomId: this.roomId,
-        chats: [{
-          user: this.currentUser.name,
-          message: this.messageText
-        }]
+        chats: [
+          {
+            user: this.currentUser.name,
+            message: this.messageText,
+          },
+        ],
       };
 
       this.storageArray.push(updateStorage);
