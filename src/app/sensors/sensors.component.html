@@ -26,7 +26,7 @@
 
 
                         <span class="numeric_values">{{ information.battery_first }}</span>
-                        <span class="numeric_values" *ngIf="information.title.includes('Battery')">%</span>
+                        <span class="numeric_values" *ngIf="information.title.includes('Battery')"></span>
 
                         <div class="data-information"
                             *ngIf="information.title === 'Overall Status' && information.status">
@@ -63,7 +63,7 @@
                         </div>
 
                         <div class="data-information" class="numeric_values">{{ information.battery_third }}</div>
-                        <span class="numeric_values" *ngIf="information.title.includes('Battery')">%</span>
+                        <span class="numeric_values" *ngIf="information.title.includes('Battery')"></span>
 
                         <div class="data-information"
                             *ngIf="information.title === 'Overall Status' && information.status">
@@ -104,7 +104,7 @@
                         </div>
 
                         <span class="data-information" class="numeric_values">{{ information.battery_second }}</span>
-                        <span class="numeric_values" *ngIf="information.title.includes('Battery')">%</span>
+                        <span class="numeric_values" *ngIf="information.title.includes('Battery')"></span>
 
                         <div class="data-information"
                             *ngIf="information.title === 'Overall Status' && information.status">

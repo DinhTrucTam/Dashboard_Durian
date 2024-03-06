@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import { AuthService } from '../_login_services/auth.service';
+import { SensorService } from '../Services/sensor.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -63,8 +64,36 @@ export class DashboardComponent implements OnInit {
     { title: 'EC', EC: '200', imageUrl: "assets/electricity.gif" },
   ]
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private sensorService: SensorService) { }
   user = { localId: "someid", displayName: "somename" };
-  ngOnInit(): void {
+  ngOnInit() {
+    let temp1, temp2 = 30;
+    let tempfinal = 0;
+    this.sensorService.receiveTemperatureLightSensorData().subscribe(data => {
+      const stringData = data.map(value => String(value));
+      const currentTime = new Date();
+      this.Air_Information[2].illum = stringData[0]; // Illuminance
+      temp1 = parseInt(data(1)); // Air Temperature
+      tempfinal = (temp1 + temp2) / 2;
+      this.Air_Information[0].temp = String(tempfinal);
+    });
+
+    this.sensorService.receiveTemperatureHumidityECData().subscribe(data => {
+      const stringData = data.map(value => String(value));
+      const currentTime = new Date();
+      this.Soil_Information[0].moist = stringData[2]; // Soil Moisture
+      this.Soil_Information[1].temp = stringData[0]; // Soil Temperature
+      this.Soil_Information[2].EC = stringData[1]; // Soil EC
+    });
+
+    this.sensorService.receiveTemperatureHumidityData().subscribe(data => {
+      const stringData = data.map(value => String(value));
+      const currentTime = new Date();
+      this.Air_Information[1].humid = stringData[0]; // Air Humidity
+      temp2 = parseInt(data(1)); // Air Temperature
+      tempfinal = (temp1 + temp2) / 2;
+      this.Air_Information[0].temp = String(tempfinal);
+    });
   }
+  
 }
