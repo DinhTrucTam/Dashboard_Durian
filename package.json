@@ -28,6 +28,7 @@
     "@ng-bootstrap/ng-bootstrap": "^15.0.0",
     "bootstrap": "^4.5.0",
     "fflate": "^0.8.1",
+    "fs": "^0.0.1-security",
     "hammerjs": "^2.0.8",
     "igniteui-angular": "^16.1.16",
     "minireset.css": "~0.0.4",

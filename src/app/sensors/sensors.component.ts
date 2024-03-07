@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { SensorService } from '../Services/sensor.service';
+import { Component, OnInit, Inject } from '@angular/core';
+import { SensorService } from '../Services/sensor.service'; // Import the SensorService
+import { SensorDataService } from '../Services/data.service';
 
 @Component({
   selector: 'app-sensors',
@@ -7,51 +8,10 @@ import { SensorService } from '../Services/sensor.service';
   styleUrls: ['./sensors.component.css']
 })
 export class SensorsComponent implements OnInit {
-  lsn50v2S31BSensors = [
-    { title: 'Air Temperature', temperature_first: '30', imageUrl: "assets/centigrade.png" },
-    { title: 'Air Humidity', humidty_first: '70', imageUrl: "assets/humidity.png" },
-    { title: 'Warning', alarm_first: 'DANGER', imageUrl: "assets/temp_warning.png" },
-    { title: 'Battery Capacity', battery_first: '75', imageUrl: "assets/smartphone-charger.png" },
-    {
-      title: 'Overall Status', status: {
-        connection: 'Not Connected',
-        battery: '75%',
-        lastUpdated: '2022-01-15 12:30 PM'
-      },
-      imageUrl: "assets/clipboard.png"
-    },
-  ];
-
-  lse018Sensors = [
-    { title: 'Soil Temperature', temperature_second: '30', imageUrl: "assets/soil_temp.png" },
-    { title: 'Soil Moisture', moisture_second: '70', imageUrl: "assets/moisturizing.png" },
-    { title: 'Soil EC', EC_second: '200', imageUrl: "assets/eco-energy.png" },
-    { title: 'Battery Capacity', battery_second: '75', imageUrl: "assets/smartphone-charger.png" },
-    {
-      title: 'Overall Status', status: {
-        connection: 'Not Connected',
-        battery: '75%',
-        lastUpdated: '2022-01-15 12:30 PM'
-      },
-      imageUrl: "assets/clipboard.png"
-    },
-  ];
-
-  lsn50v28Sensors = [
-    { title: 'Air Temperature', temperature_third: '30', imageUrl: "assets/centigrade.png" },
-    { title: 'Illuminance', illum_third: '500', imageUrl: "assets/contrast.png" },
-    { title: 'Battery Capacity', battery_third: '75', imageUrl: "assets/smartphone-charger.png" },
-    {
-      title: 'Overall Status', status: {
-        connection: 'Not Connected',
-        battery: '75%',
-        lastUpdated: '2022-01-15 12:30 PM'
-      },
-      imageUrl: "assets/clipboard.png"
-    },
-  ];
-
-  constructor(private sensorService: SensorService) { }
+  constructor(
+    private sensorService: SensorService,
+    @Inject(SensorDataService) private sensorDataService: SensorDataService
+  ) { }
 
   ngOnInit() {
     this.sensorService.receiveTemperatureLightSensorData().subscribe(data => {
@@ -92,5 +52,17 @@ export class SensorsComponent implements OnInit {
     this.sensorService.onDisconnect().subscribe(() => {
       console.log('Disconnected from server');
     });
+  }
+
+  get lsn50v2S31BSensors() {
+    return this.sensorDataService.lsn50v2S31BSensors;
+  }
+
+  get lse018Sensors() {
+    return this.sensorDataService.lse018Sensors;
+  }
+
+  get lsn50v28Sensors() {
+    return this.sensorDataService.lsn50v28Sensors;
   }
 }
