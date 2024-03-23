@@ -1,12 +1,14 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import { AuthService } from '../_login_services/auth.service';
+import { SensorService } from '../Services/sensor.service';
+import { DashboardDataService } from '../Services/dashboard-data.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
   // private breakpointObserver = inject(BreakpointObserver);
@@ -35,36 +37,60 @@ export class DashboardComponent implements OnInit {
   //     ];
   //   })
   // );
-  Dashboard_Header = [
-    { title: 'Sensors', info: 'Number of current sensors', values: '3', },
-    { title: 'Gateway', info: 'Gateway status', values: 'Good' },
-    { title: 'Lights', info: 'Light status', values: 'On' },
-    { title: 'Canopy', info: 'Canopy status', values: 'On' },
-  ];
 
-  // Main_Information = [
-  //   { title: 'Air Temperature',  air_temp: '30',    imageUrl: "assets/hot.gif",           lowest: '25', average: '28', highest:'33' },
-  //   { title: 'Humidity',         humidity:   '30',  imageUrl: "assets/drop.gif",          lowest: '25', average: '28', highest:'33' },
-  //   { title: 'Illuminance',      illum:      '30',  imageUrl: "assets/sun.gif",           lowest: '25', average: '28', highest:'33' },
-  //   { title: 'Soil Temperature', soil_temp:  '70',  imageUrl: "assets/soil_temp.png",     lowest: '25', average: '28', highest:'33' },
-  //   { title: 'Soil Moisture',    soil_moist: '70',  imageUrl: "assets/hydrated-skin.gif", lowest: '25', average: '28', highest:'33' },
-  //   { title: 'Soil EC',          soil_EC:    '200', imageUrl: "assets/electricity.gif",   lowest: '25', average: '28', highest:'33' },
-  // ];
+  constructor(
+    private auth: AuthService,
+    private sensorService: SensorService,
+    @Inject(DashboardDataService)
+    private dashboardDataService: DashboardDataService
+  ) {}
+  user = { localId: 'someid', displayName: 'somename' };
+  ngOnInit() {
+    let temp1 = 0,
+      temp2 = 0;
+    let tempfinal = 0;
+    this.sensorService.receiveTemperatureLightSensorData().subscribe((data) => {
+      const stringData = data.map((value) => String(value));
+      this.Air_Information[2].illum = stringData[0]; // Illuminance
+      console.log('templightdata', stringData[1]);
+      temp1 = parseFloat(stringData[1]); // Air Temperature
+      if (temp2 == 0) {
+        tempfinal = temp1;
+      } else {
+        tempfinal = (temp1 + temp2) / 2;
+      }
+      this.Air_Information[0].temp = String(tempfinal);
+    });
 
-  Air_Information = [
-    { title: 'Temperature', temp: '30', imageUrl: "assets/centigrade.png" },
-    { title: 'Humidity', humid: '30', imageUrl: "assets/humidity.png" },
-    { title: 'Illuminance', illum: '30', imageUrl: "assets/contrast.png" },
-  ]
+    this.sensorService.receiveTemperatureHumidityECData().subscribe((data) => {
+      const stringData = data.map((value) => String(value));
+      const currentTime = new Date();
+      this.Soil_Information[1].moist = stringData[2]; // Soil Moisture
+      this.Soil_Information[0].temp = stringData[0]; // Soil Temperature
+      this.Soil_Information[2].EC = stringData[1]; // Soil EC
+    });
 
-  Soil_Information = [
-    { title: 'Temperature', temp: '70', imageUrl: "assets/soil_temp.png" },
-    { title: 'Moisture', moist: '70', imageUrl: "assets/hydrated-skin.gif" },
-    { title: 'EC', EC: '200', imageUrl: "assets/electricity.gif" },
-  ]
-
-  constructor(private auth: AuthService) { }
-  user = { localId: "someid", displayName: "somename" };
-  ngOnInit(): void {
+    this.sensorService.receiveTemperatureHumidityData().subscribe((data) => {
+      const stringData = data.map((value) => String(value));
+      const currentTime = new Date();
+      this.Air_Information[1].humid = stringData[0]; // Air Humidity
+      console.log('temphumiddata', stringData[1]);
+      temp2 = parseFloat(stringData[1]); // Air Temperature
+      if (temp1 == 0) {
+        tempfinal = temp2;
+      } else {
+        tempfinal = (temp1 + temp2) / 2;
+      }
+      this.Air_Information[0].temp = String(tempfinal);
+    });
+  }
+  get Dashboard_Header() {
+    return this.dashboardDataService.Dashboard_Header;
+  }
+  get Air_Information() {
+    return this.dashboardDataService.Air_Information;
+  }
+  get Soil_Information() {
+    return this.dashboardDataService.Soil_Information;
   }
 }

@@ -23,6 +23,7 @@
     "@angular/router": "^16.0.0",
     "@canvasjs/angular-charts": "^1.0.3",
     "@fortawesome/angular-fontawesome": "^0.13.0",
+    "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@igniteui/material-icons-extended": "^3.0.0",
     "@ng-bootstrap/ng-bootstrap": "^15.0.0",
     "bootstrap": "^4.5.0",
