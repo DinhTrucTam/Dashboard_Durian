@@ -11,11 +11,21 @@ export class AuthService {
 
   constructor() { }
 
-  setVerified(verified: boolean): void {
+  person_type: string;
+  setVerified(verified: boolean, type: string): void {
+    this.person_type = type;
     this.verifiedSubject.next(verified);
   }
 
-  isAuthenticated(): boolean {
-    return this.verifiedSubject.value;
+  isAuthenticated(): String {
+    if (this.person_type == 'admin')
+    {
+      return 'adminAuthenticated';
+    }
+    else if (this.person_type == 'user')
+    {
+      return 'userAuthenticated';
+    }
+    return 'null';
   }
 }

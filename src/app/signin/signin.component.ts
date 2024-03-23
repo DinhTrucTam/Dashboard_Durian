@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../_login_services/auth.service';
-import { SettingsComponent } from '../settings/settings.component';
 
 @Component({
   selector: 'app-signin',
@@ -11,36 +10,38 @@ import { SettingsComponent } from '../settings/settings.component';
 export class SigninComponent implements OnInit {
 
   constructor(private router: Router, private authService: AuthService) { }
-  public chatService: SettingsComponent;
 
   username: string;
   password: string;
   verified: boolean = false;
 
+  admin_username: string = 'admin';
+  admin_password: string = 'admin';
+
+  user1_username: string = 'user1';
+  user1_password: string = 'user1';
+
+  person_type: string;
+
   ngOnInit() {
   }
 
-  classification(dismiss: any): void{
-    this.chatService.currentUser = this.chatService.userList.find(user => user.phone === this.username);
-    this.chatService.userList = this.chatService.userList.filter((user) => user.phone !== this.username);
-
-    if (this.chatService.currentUser) {
-      this.chatService.showScreen = true;
-      console.log(this.chatService.currentUser);
-      dismiss();
-    }
-  }
-
   login(): void {
-    if (this.username == 'admin@gmail.com' && this.password == 'admin') {
+    if (this.username == this.admin_username && this.password == this.admin_password) {
+      this.person_type = 'admin';
       this.verified = true;
-      this.authService.setVerified(this.verified);
-      this.classification(false);
+      this.authService.setVerified(this.verified, this.person_type);
       this.router.navigate(["sensors"]);
+    }
+    else if (this.username == this.user1_username && this.password == this.user1_password) {
+      this.person_type = 'user';
+      this.verified = true;
+      this.authService.setVerified(this.verified, this.person_type);
+      this.router.navigate(["dashboard"]);
     }
     else {
       this.verified = false;
-      this.authService.setVerified(this.verified);
+      this.authService.setVerified(this.verified, 'null');
       alert("Invalid credentials");
     }
   }

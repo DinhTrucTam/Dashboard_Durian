@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AfterViewInit, OnInit, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ChatService } from '../Services/chat';
-import { SigninComponent } from '../signin/signin.component';
+import { AuthService } from '../_login_services/auth.service';
 
 @Component({
   selector: 'app-settings',
@@ -10,9 +10,7 @@ import { SigninComponent } from '../signin/signin.component';
   styleUrls: ['./settings.component.css']
 })
 export class SettingsComponent implements OnInit, AfterViewInit {
-  // @ViewChild('popup', { static: false }) popup: any;
-
-  public signinCheck: SigninComponent;
+  @ViewChild('popup', { static: false }) popup: any;
 
   public roomId: string;
   public messageText: string;
@@ -20,7 +18,7 @@ export class SettingsComponent implements OnInit, AfterViewInit {
   private storageArray = [];
 
   public showScreen = false;
-  public phone: string;
+  public role: string = ''; // Declare role variable to store the input text
   public currentUser;
   public selectedUser;
 
@@ -28,7 +26,7 @@ export class SettingsComponent implements OnInit, AfterViewInit {
     {
       id: 1,
       name: 'Admin',
-      phone: 'admin@gmail.com',
+      role: 'admin',
       image: 'assets/admin.png',
       roomId: {
         2: 'room-1',
@@ -38,42 +36,21 @@ export class SettingsComponent implements OnInit, AfterViewInit {
     },
     {
       id: 2,
-      name: 'User 1',
-      phone: '9876543210',
-      image: 'assets/farmer.png',
+      name: 'User',
+      role: 'user',
+      image: 'assets/user.png',
       roomId: {
         1: 'room-1',
         3: 'room-4',
         4: 'room-5'
       }
     },
-    {
-      id: 3,
-      name: 'Albert Flores',
-      phone: '9988776655',
-      image: 'assets/user/user-3.png',
-      roomId: {
-        1: 'room-2',
-        2: 'room-4',
-        4: 'room-6'
-      }
-    },
-    {
-      id: 4,
-      name: 'Dianne Russell',
-      phone: '9876556789',
-      image: 'assets/user/user-4.png',
-      roomId: {
-        1: 'room-3',
-        2: 'room-5',
-        3: 'room-6'
-      }
-    }
   ];
 
   constructor(
     private modalService: NgbModal,
-    private chatService: ChatService
+    private chatService: ChatService,
+    public auth: AuthService
   ) {
   }
 
@@ -93,26 +70,29 @@ export class SettingsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // this.openPopup(this.popup);
+    this.openPopup(this.popup);
   }
 
-  // openPopup(content: any): void {
-  //   this.modalService.open(content, { backdrop: 'static', centered: true });
-  // }
+  openPopup(content: any): void {
+    this.modalService.open(content, { backdrop: false, centered: true });
+  }
 
   login(dismiss: any): void {
-    this.currentUser = this.userList.find(user => user.phone === this.phone.toString());
-    this.userList = this.userList.filter((user) => user.phone !== this.phone.toString());
+    if (this.auth.person_type != this.role)
+    {
+      return;
+    }
+    this.currentUser = this.userList.find(user => user.role === this.role.toString());
+    this.userList = this.userList.filter((user) => user.role !== this.role.toString());
 
     if (this.currentUser) {
       this.showScreen = true;
-      console.log(this.currentUser);
       dismiss();
     }
   }
 
   selectUserHandler(phone: string): void {
-    this.selectedUser = this.userList.find(user => user.phone === phone);
+    this.selectedUser = this.userList.find(user => user.role === phone);
     this.roomId = this.selectedUser.roomId[this.currentUser.id];
     this.messageArray = [];
 

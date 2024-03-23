@@ -1,70 +1,30 @@
 <div class="signin-page-container">
     <h1 class="login-text">LOGIN PAGE</h1>
     <mat-card>
-        <!-- <mat-card-content>
-            <div class="header">
-                <P>Sign Into Your Account </P>
-            </div>
-            <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
-                <div class="emailInput">
-                    <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>Email</mat-label>
-                        <input formControlName="email" matInput placeholder="Enter email address" required />
-                        <mat-error *ngIf="!loginForm.controls['email'].valid">
-                            Email is required
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-
-                <div>
-                    <span>
-                        <a class="text-link" class="aLink" routerLink="/auth/forgot-password">Forgot Password?</a>
-                    </span>
-                    <mat-form-field class="full-width" appearance="outline">
-                        <mat-label>Password</mat-label>
-                        <input formControlName="password" matInput [type]=" hide ? 'password' : 'text'" required />
-                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'"
-                            [attr.aria-pressed]="hide">
-                            <mat-icon>
-                                {{hide ? 'visibility_off' : 'visibility'}}
-                            </mat-icon>
-                        </button>
-                        <mat-error *ngIf="!loginForm.controls['password'].valid">
-                            Password is required
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div class="button-row">
-                    <button mat-flat-button><span class="text">Login</span></button>
-                </div>
-            </form>
-
-            <div class="button-row">
-                <br>
-                <p>Don't have an account yet? Please contact us for free</p>
-            </div>
-        </mat-card-content> -->
         <mat-card-content>
             <form class="example-form">
                 <table class="example-full-width" cellspacing="0">
                     <tr>
-                        <td>
+                        <td class="box"> 
+                            <span>Username: </span>
                             <mat-form-field class="example-full-width">
                                 <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
                             </mat-form-field>
                         </td>
                     </tr>
                     <tr>
-                        <td><mat-form-field class="example-full-width">
+                        <td class="box">
+                            <span>Password: </span>
+                            <mat-form-field class="example-full-width">
                                 <input matInput placeholder="Password" [(ngModel)]="password" type="password"
                                     name="password" required>
-                            </mat-form-field></td>
+                            </mat-form-field>
+                        </td>
                     </tr>
                 </table>
             </form>
-            <!-- <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner> -->
         </mat-card-content>
-        <mat-card-actions>
+        <mat-card-actions class="login_btn">
             <button mat-raised-button (click)="login()" color="primary">Login</button>
         </mat-card-actions>
     </mat-card>

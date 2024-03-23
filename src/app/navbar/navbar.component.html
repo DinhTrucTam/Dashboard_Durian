@@ -10,21 +10,10 @@
     <div class="button-action">
 
         <!--Contact button-->
-        <button [matMenuTriggerFor]="lv1contact" mat-raised-button color="#e4f296" class="toolbar-button">
-            <div class="toolbar-item">Contact</div>
-            <mat-icon>forum</mat-icon>
+        <button mat-raised-button class="toolbar-button" (click)="notif.toggle()">
+            <div class="toolbar-item">Notifications</div>
+            <mat-icon>notification_important</mat-icon>
         </button>
-
-        <!--Notifications button-->
-        <mat-menu #lv1contact="matMenu">
-            <button (click)="badgevisibility()" mat-menu-item>
-                <span class="menu-text">Notifications</span>
-                <mat-icon matBadge="3" matBadgeColor="accent" matBadgeSize="small" [matBadgeHidden]="badgevisible"
-                    mat-raised-button>
-                    notification_important
-                </mat-icon>
-            </button>
-        </mat-menu>
     </div>
 </mat-toolbar>
 
@@ -37,9 +26,10 @@
     <mat-drawer #drawer opened="true" mode="side" position="start" class="centered-items">
         <div>
             <mat-nav-list>
-                <ng-container *ngIf="this.auth.isAuthenticated(); then authenticated; else notAuthenticated">
-
+                <ng-container *ngIf="this.auth.isAuthenticated() === 'adminAuthenticated'; then adminAuthenticated else 
+                   (auth.isAuthenticated() === 'userAuthenticated' ? userAuthenticated : notAuthenticated)">
                 </ng-container>
+
                 <ng-template #notAuthenticated>
                     <mat-list-item routerLink="/home" class="centered-list-item">
                         <mat-icon class="icon-image">home</mat-icon>
@@ -47,7 +37,24 @@
                     </mat-list-item>
                 </ng-template>
 
-                <ng-template #authenticated>
+                <ng-template #adminAuthenticated>
+                    <mat-list-item routerLink="/sensors" class="centered-list-item">
+                        <mat-icon class="icon-image">important_devices class="icon-image"</mat-icon>
+                        <div class="item-label">Sensors</div>
+                    </mat-list-item>
+
+                    <mat-list-item routerLink="/analysis" class="centered-list-item">
+                        <mat-icon class="icon-image">assessment</mat-icon>
+                        <div class="item-label">Analysis</div>
+                    </mat-list-item>
+
+                    <mat-list-item routerLink="/settings" class="centered-list-item">
+                        <mat-icon class="icon-image">settings</mat-icon>
+                        <div class="item-label">Chat</div>
+                    </mat-list-item>
+                </ng-template>
+
+                <ng-template #userAuthenticated>
                     <mat-list-item routerLink="/dashboard" class="centered-list-item">
                         <mat-icon class="icon-image">dashboard</mat-icon>
                         <div class="item-label">Dashboard</div>
@@ -67,21 +74,21 @@
                         <mat-icon class="icon-image">person</mat-icon>
                         <div class="item-label">User Profile</div>
                     </mat-list-item>
-                </ng-template>
 
-                <mat-list-item routerLink="/settings" class="centered-list-item">
-                    <mat-icon class="icon-image">settings</mat-icon>
-                    <div class="item-label">Chat</div>
-                </mat-list-item>
+                    <mat-list-item routerLink="/settings" class="centered-list-item">
+                        <mat-icon class="icon-image">settings</mat-icon>
+                        <div class="item-label">Chat</div>
+                    </mat-list-item>
+                </ng-template>
             </mat-nav-list>
         </div>
     </mat-drawer>
 
     <!--Drawer for Notifications-->
-    <mat-drawer #messages opened="false" mode="side" position="end" class="message_drawer"
+    <mat-drawer #notif opened="false" mode="side" position="end" class="notification_drawer"
         style="transform: none;visibility: visible;border-radius: 10px; margin-left: 10px;">
         <div>
-            Messages content
+            Notifications content
         </div>
     </mat-drawer>
 

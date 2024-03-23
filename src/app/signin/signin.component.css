@@ -44,64 +44,14 @@ mat-card {
     z-index: 1;
 }
 
-.login-text-description {
-    position: relative;
-    z-index: 1;
-
+.example-form
+{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
 }
 
-.header {
-    text-align: center;
-    font-family: 'Hind', sans-serif;
-    font-size: 20px;
-}
-
-.full-width {
-    width: 80%;
-}
-
-.button-row {
-    padding-top: 5px;
-    font-family: 'Hind', sans-serif;
-}
-
-.button-row a {
-    margin-right: 8px;
-    text-align: center;
-}
-
-.forget-password {
-    padding-left: 0px;
-}
-
-.emailInput {
-    padding-top: 10px;
-}
-
-.contentBody {
-    padding: 60px 1rem;
-    background: #1b6ca8;
-    display: block;
-}
-
-.aLink {
-    float: right;
-    padding-right: 60px;
-    text-decoration: none;
-    font-family: 'Hind', sans-serif;
-}
-
-.text {
-    font-family: 'Hind', sans-serif;
-    font-weight: bold;
-}
-
-.button-row button {
-    border: 3px solid #ccd4a4;
-    background-color: blanchedalmond;
-    border-radius: 10px;
-    font-family: 'Hind', sans-serif;
-    font-weight: bold;
-    font-size: medium;
-    width: 150px;
+.login_btn{
+    align-self: center;
+    height: 35px;
 }
