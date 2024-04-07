@@ -1,4 +1,6 @@
 import { Component, inject } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DurianStagesDialogComponent } from '../durian-stages-dialog/durian-stages-dialog.component';
 
 @Component({
   selector: 'app-sensors',
@@ -6,6 +8,7 @@ import { Component, inject } from '@angular/core';
   styleUrls: ['./sensors.component.css']
 })
 export class SensorsComponent {
+  constructor(public dialog: MatDialog) { }
   lsn50v2S31BSensors = [
     { title: 'Air Temperature', temperature_first: '30', imageUrl: "assets/centigrade.png" },
     { title: 'Air Humidity', humidty_first: '70', imageUrl: "assets/humidity.png" },
@@ -49,4 +52,25 @@ export class SensorsComponent {
       imageUrl: "assets/clipboard.png"
     },
   ];
+
+  ngOnInit(): void { }
+
+  exportQRCode(object: string): void {
+    switch (object) {
+      case 'LSN50v2-S31B':
+        // todo
+        break;
+      case 'LSN50v2-8':
+        //todo
+        break;
+      case 'LSE01-8':
+        //todo
+        break;
+      default:
+        return;
+    }
+    this.dialog.open(DurianStagesDialogComponent, {
+
+    });
+  }
 }

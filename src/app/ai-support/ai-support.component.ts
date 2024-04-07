@@ -6,5 +6,5 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ai-support.component.css']
 })
 export class AiSupportComponent {
-
+  // logic to get from backend
 }
