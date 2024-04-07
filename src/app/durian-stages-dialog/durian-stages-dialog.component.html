@@ -1,0 +1,13 @@
+<!-- durian-stages-dialog.component.html -->
+
+<h2 class="title">Slect Durian Stage</h2>e
+<div class="dialog-content">
+    <p>Please choose the Durian stage:</p>
+    <select [(ngModel)]="selectedStage">
+        <option *ngFor="let stage of stages" [value]="stage.value">{{ stage.label }}</option>
+    </select>
+</div>
+<div class="dialog-actions">
+    <button mat-raised-button color="primary" (click)="closeDialog()">Close</button>
+    <button mat-raised-button color="primary" (click)="confirmSelection()">Confirm</button>
+</div>

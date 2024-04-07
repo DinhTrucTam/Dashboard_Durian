@@ -45,6 +45,10 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DurianStagesDialogComponent } from './durian-stages-dialog/durian-stages-dialog.component';
+
+import { MatRadioModule } from '@angular/material/radio';
+import { AiSupportComponent } from './ai-support/ai-support.component';
 
 
 @NgModule({
@@ -64,6 +68,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SettingsComponent,
     LeftContainerComponent,
     RightContainerComponent,
+    DurianStagesDialogComponent,
+    AiSupportComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,7 +95,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
     CanvasJSAngularChartsModule,
     MatProgressSpinnerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

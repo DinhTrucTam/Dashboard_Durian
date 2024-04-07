@@ -37,9 +37,9 @@ export class DashboardComponent implements OnInit {
   // );
   Dashboard_Header = [
     { title: 'Sensors', info: 'Number of current sensors', values: '3', },
-    { title: 'Gateway', info: 'Gateway status', values: 'Good' },
-    { title: 'Lights', info: 'Light status', values: 'On' },
-    { title: 'Canopy', info: 'Canopy status', values: 'On' },
+    { title: 'Gateway', info: 'Gateway status',            values: 'Good' },
+    { title: 'Lights',  info: 'Light status',              values: 'On' },
+    { title: 'Stage',   info: 'Current stage',             values: '2A' },
   ];
 
   // Main_Information = [

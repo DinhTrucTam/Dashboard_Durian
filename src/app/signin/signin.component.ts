@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../_login_services/auth.service';
+import { DurianStagesDialogService } from '../Services/stages_management_service';
 
 @Component({
   selector: 'app-signin',
@@ -9,8 +10,8 @@ import { AuthService } from '../_login_services/auth.service';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private router: Router, private authService: AuthService) { }
-
+  constructor(private router: Router, private authService: AuthService, private dialogService: DurianStagesDialogService) { }
+  
   username: string;
   password: string;
   verified: boolean = false;
@@ -37,12 +38,9 @@ export class SigninComponent implements OnInit {
       this.person_type = 'user';
       this.verified = true;
       this.authService.setVerified(this.verified, this.person_type);
-      this.router.navigate(["dashboard"]);
-    }
-    else {
-      this.verified = false;
-      this.authService.setVerified(this.verified, 'null');
-      alert("Invalid credentials");
+      this.dialogService.openDialog();
+      this.router.navigate(["sensors"]);
     }
   }
+
 }

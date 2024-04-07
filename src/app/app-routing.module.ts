@@ -11,7 +11,7 @@ import { AboutComponent } from './about/about.component';
 import { SettingsComponent } from './settings/settings.component';
 import { TtsComponent } from './tts/tts.component';
 import { SigninComponent } from './signin/signin.component';
-import { SignupComponent } from './signup/signup.component';
+import { AiSupportComponent } from './ai-support/ai-support.component';
 
 
 const routes: Routes = [
@@ -26,7 +26,8 @@ const routes: Routes = [
   { path: 'tts', component: TtsComponent },
   { path: 'settings', component: SettingsComponent },
   { path: 'signin', component: SigninComponent},
-  { path: 'signup', component: SignupComponent },
+  { path: 'smart-lookup', component: AiSupportComponent },
+
   // Add more routes as needed
 ];
 

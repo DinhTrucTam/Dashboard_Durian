@@ -1,0 +1,23 @@
+/* durian-stages-dialog.component.css */
+
+.title {
+    font-size: 25pt;
+    text-align: center;
+}
+
+.dialog-content {
+    font-size: 18pt;
+    align-items: center;
+    text-align: center;
+}
+
+.dialog-actions {
+    margin-top: 60px;
+    align-items: center;
+    text-align: center;
+    margin: 50px;
+}
+
+.dialog-actions button{
+    margin: 15px;
+}

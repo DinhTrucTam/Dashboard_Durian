@@ -3,17 +3,18 @@
     <div class="userprofile-content">
         <mat-card class="left-card">
             <mat-card-header class="left-card-header">
-                <img src="./../../assets/Thanh_Tam.jpg" alt="user-avatar">
+                <img [src]="userAvatar || './../../assets/Thanh_Tam.jpg'" alt="user-avatar">
             </mat-card-header>
 
             <mat-card-content class="card-content">
-                <label mat-raised-button for="avatar-upload" class="btn-change-avatar">Choose</label>
-                <input type="file" id="avatar-upload" style="display: none;">
+                <label for="avatar-upload" class="btn-change-avatar">
+                    Choose
+                </label>
+                <input type="file" id="avatar-upload" (change)="onFileSelected($event)" style="display: none;">
                 <div class="user-fullname">
                     Võ Thanh Tâm
                 </div>
             </mat-card-content>
-
         </mat-card>
 
         <mat-card class="right-card">
