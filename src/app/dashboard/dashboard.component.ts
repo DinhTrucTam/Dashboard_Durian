@@ -1,7 +1,7 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
-import { AuthService } from '../_login_services/auth.service';
+import { DurianStagesDialogService } from '../Services/stages_management_service';
 
 @Component({
   selector: 'app-dashboard',
@@ -35,11 +35,12 @@ export class DashboardComponent implements OnInit {
   //     ];
   //   })
   // );
+
   Dashboard_Header = [
     { title: 'Sensors', info: 'Number of current sensors', values: '3', },
-    { title: 'Gateway', info: 'Gateway status',            values: 'Good' },
-    { title: 'Lights',  info: 'Light status',              values: 'On' },
-    { title: 'Stage',   info: 'Current stage',             values: '2A' },
+    { title: 'Gateway', info: 'Gateway status', values: 'Good' },
+    { title: 'Lights', info: 'Light status', values: 'On' },
+    { title: 'Stage', info: 'Current stage', values: this.stages.getResult() },
   ];
 
   // Main_Information = [
@@ -63,7 +64,8 @@ export class DashboardComponent implements OnInit {
     { title: 'EC', EC: '200', imageUrl: "assets/electricity.gif" },
   ]
 
-  constructor(private auth: AuthService) { }
+  constructor(
+    @Inject(DurianStagesDialogService) private stages: DurianStagesDialogService) { }
   user = { localId: "someid", displayName: "somename" };
   ngOnInit(): void {
   }

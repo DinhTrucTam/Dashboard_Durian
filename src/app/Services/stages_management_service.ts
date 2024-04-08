@@ -7,6 +7,7 @@ import { DurianStagesDialogComponent } from '../durian-stages-dialog/durian-stag
 })
 export class DurianStagesDialogService {
 
+    res: string;
     constructor(private dialog: MatDialog) { }
 
     openDialog(): void {
@@ -16,7 +17,12 @@ export class DurianStagesDialogService {
 
         dialogRef.afterClosed().subscribe(result => {
             console.log('Dialog closed with result:', result);
+            this.res = result;
             // You can handle the selected Durian stage here
         });
+    }
+
+    getResult(): string {
+        return this.res;
     }
 }
