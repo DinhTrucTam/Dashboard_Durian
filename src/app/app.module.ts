@@ -49,6 +49,7 @@ import { DurianStagesDialogComponent } from './durian-stages-dialog/durian-stage
 
 import { MatRadioModule } from '@angular/material/radio';
 import { AiSupportComponent } from './ai-support/ai-support.component';
+import { ChartModule } from 'angular-highcharts';
 
 
 @NgModule({
@@ -96,7 +97,8 @@ import { AiSupportComponent } from './ai-support/ai-support.component';
     CanvasJSAngularChartsModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-    MatRadioModule
+    MatRadioModule,
+    ChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

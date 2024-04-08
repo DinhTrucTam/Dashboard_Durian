@@ -34,14 +34,14 @@
 }
 
 .button {
-  font-family: 'Hind', sans-serif;
-  font-weight: bold;
-  font-size: large;
   width: fit-content;
   height: 45px;
-  border: 3px solid #ccd4a4;
-  border-radius: 10px;
-  background-color: blanchedalmond;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 15px;
 }
 
 .card-container {

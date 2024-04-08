@@ -1,5 +1,30 @@
+.page-container {
+    background-color: #d9d8fe75;
+    border: 3px solid #bebcfa75;
+    border-radius: 10px;
+    color: black;
+    margin-left: 3px;
+    min-height: 900px;
+    position: relative;
+}
+
 .push-right {
     margin-left: 90%;
+}
+
+.btn-primary {
+    background-color: #4CAF50;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 .person {
@@ -18,7 +43,7 @@
     padding: 20px;
     min-height: 400px;
     max-height: 400px;
-    overflow-y: scroll
+    overflow-y: scroll;
 }
 
 
