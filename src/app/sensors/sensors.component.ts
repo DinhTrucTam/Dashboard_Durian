@@ -1,6 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DurianStagesDialogComponent } from '../durian-stages-dialog/durian-stages-dialog.component';
+import { QRImageDialogComponent } from '../qr-image-dialog/qr-image-dialog.component';
 
 @Component({
   selector: 'app-sensors',
@@ -56,21 +56,30 @@ export class SensorsComponent {
   ngOnInit(): void { }
 
   exportQRCode(object: string): void {
+    let imageUrl: string;
     switch (object) {
-      case 'LSN50v2-S31B':
+      case "LSN50v2-S31B":
         // todo
+        imageUrl = "assets/lsn50v2s31b.png";
         break;
-      case 'LSN50v2-8':
+      case "LSN50v2-8":
         //todo
+        imageUrl = "assets/lsn50v28.png";
         break;
-      case 'LSE01-8':
+      case "LSE01-8":
         //todo
+        imageUrl = "assets/lse018.png";
         break;
       default:
         return;
     }
-    this.dialog.open(DurianStagesDialogComponent, {
+    this.openImageDialog(imageUrl);
+  }
 
+  openImageDialog(imageUrl: string): void {
+    this.dialog.open(QRImageDialogComponent, {
+      width: '600px',
+      data: { Image: imageUrl },
     });
   }
 }

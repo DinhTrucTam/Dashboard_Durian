@@ -50,6 +50,7 @@ import { DurianStagesDialogComponent } from './durian-stages-dialog/durian-stage
 import { MatRadioModule } from '@angular/material/radio';
 import { AiSupportComponent } from './ai-support/ai-support.component';
 import { ChartModule } from 'angular-highcharts';
+import { QRImageDialogComponent } from './qr-image-dialog/qr-image-dialog.component';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { ChartModule } from 'angular-highcharts';
     RightContainerComponent,
     DurianStagesDialogComponent,
     AiSupportComponent,
+    QRImageDialogComponent,
   ],
   imports: [
     BrowserModule,
