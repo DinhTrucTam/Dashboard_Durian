@@ -9,6 +9,7 @@ import { DurianStagesDialogService } from '../Services/stages_management_service
   templateUrl: './sensors.component.html',
   styleUrls: ['./sensors.component.css']
 })
+
 export class SensorsComponent {
   constructor(public dialog: MatDialog, private toastr: ToastrService, @Inject(DurianStagesDialogService) private stages: DurianStagesDialogService) { }
   lsn50v2S31BSensors = [
@@ -89,7 +90,7 @@ export class SensorsComponent {
     const moistValue: number = parseFloat(this.lse018Sensors[1].moisture_second);
     const tempValue: number = (parseFloat(this.lsn50v2S31BSensors[0].temperature_first) + parseFloat(this.lsn50v28Sensors[0].temperature_third)) / 2;
     // Giai đoạn cây con và cây ra hoa
-    if (this.stages.getResult() == "Young Tree" && this.stages.getResult() == "First Flowrering") {
+    if (this.stages.getResult() == "Young Tree" || this.stages.getResult() == "First Flowering") {
       if (moistValue >= 0 && moistValue < 30) {
         this.toastr.error("Soil Moisture is currently too low. Trees need watering", "Danger", this.toastConfig());
       }
@@ -98,14 +99,14 @@ export class SensorsComponent {
       }
       else if (moistValue >= 65 && moistValue <= 80) {
         if (tempValue >= 24 && tempValue <= 30) {
-          this.toastr.success("Soil Moisture and Air Temperature is perfect for Flowering", "Optimal", this.toastConfig());
+          this.toastr.success("Soil Moisture and Air Temperature is perfect", "Optimal", this.toastConfig());
         }
         else {
           this.toastr.warning("Air Temperature is not optimal. But Soil Moisture is good.", "Nearly Optimal", this.toastConfig());
         }
       }
       else if (moistValue > 80 && moistValue <= 100) {
-        this.toastr.error("Soil is too wet for Flowering", "Danger", this.toastConfig());
+        this.toastr.error("Soil is too wet", "Danger", this.toastConfig());
       }
     }
 

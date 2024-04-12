@@ -11,7 +11,7 @@
 
         <!--Contact button-->
         <button mat-raised-button class="toolbar-button" (click)="notif.toggle()">
-            <div class="toolbar-item">Notifications</div>
+            <div class="toolbar-item">Tips for Optimal Growth</div>
             <mat-icon>notification_important</mat-icon>
         </button>
     </div>
@@ -98,7 +98,57 @@
     <mat-drawer #notif opened="false" mode="side" position="end" class="notification_drawer"
         style="transform: none;visibility: visible;border-radius: 10px; margin-left: 10px;">
         <div>
-            Notifications content
+            Tips are based on
+            <a
+                href="https://nguyentan.vn/blogs/goc-ky-thuat/ky-thuat-trong-va-cham-soc-cay-sau-rieng#:~:text=Kho%E1%BA%A3ng%20nhi%E1%BB%87t%20%C4%91%E1%BB%99%20th%C3%ADch%20h%E1%BB%A3p,%E1%BA%A9m%20%C4%91%E1%BB%99%2050%20%E2%80%93%2060%25.&text=%2D%20Gi%E1%BB%91ng%20tr%E1%BB%93ng%20ph%E1%BB%95%20bi%E1%BA%BFn%20hi%E1%BB%87n,Ri%206%2C%20Monthong%2C%20Musangking." target="_blank">this
+                link</a>
+            <mat-card class="tips-card">
+                <mat-card-content>
+                    Stage 1: Young Tree
+                    <mat-list-item>
+                        Temperature: 24 - 30 °C
+                    </mat-list-item>
+                    <mat-list-item>
+                        Soil Moisture: 65 - 80 %
+                    </mat-list-item>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card class="tips-card">
+                <mat-card-content>
+                    Stage 2: First Flowering
+                    <mat-list-item>
+                        Temperature: 24 - 30 °C
+                    </mat-list-item>
+                    <mat-list-item>
+                        Soil Moisture: 65 - 80 %
+                    </mat-list-item>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card class="tips-card">
+                <mat-card-content>
+                    Stage 3: Fruit Bearing
+                    <mat-list-item>
+                        Temperature: 24 - 30 °C
+                    </mat-list-item>
+                    <mat-list-item>
+                        Soil Moisture: 70 - 90 %
+                    </mat-list-item>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card class="tips-card">
+                <mat-card-content>
+                    Stage 4: Fruit Ripening
+                    <mat-list-item>
+                        Temperature: 20 - 22 °C
+                    </mat-list-item>
+                    <mat-list-item>
+                        Soil Moisture: 50 - 60 %
+                    </mat-list-item>
+                </mat-card-content>
+            </mat-card>
         </div>
     </mat-drawer>
 
