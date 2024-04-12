@@ -1,185 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Chart } from 'angular-highcharts';
+import { chart } from 'highcharts';
 
 @Component({
   selector: 'app-analysis',
   templateUrl: './analysis.component.html',
   styleUrls: ['./analysis.component.css']
 })
-export class AnalysisComponent {
-  // dps = [{ x: 1, y: 10 }, { x: 2, y: 13 }, { x: 3, y: 18 }, { x: 4, y: 20 }, { x: 5, y: 17 }, { x: 6, y: 10 }, { x: 7, y: 13 }, { x: 8, y: 18 }, { x: 9, y: 20 }, { x: 10, y: 17 }];
-  // chart: any;
-
-  // dps2 = [{ x: 1, y: 10 }, { x: 2, y: 13 }, { x: 3, y: 18 }, { x: 4, y: 20 }, { x: 5, y: 17 }, { x: 6, y: 10 }, { x: 7, y: 13 }, { x: 8, y: 18 }, { x: 9, y: 20 }, { x: 10, y: 17 }];
-  // chart2: any;
-
-  // dps3 = [{ x: 1, y: 10 }, { x: 2, y: 13 }, { x: 3, y: 18 }, { x: 4, y: 20 }, { x: 5, y: 17 }, { x: 6, y: 10 }, { x: 7, y: 13 }, { x: 8, y: 18 }, { x: 9, y: 20 }, { x: 10, y: 17 }];
-  // chart3: any;
-
-  // dps4 = [{ x: 1, y: 10 }, { x: 2, y: 13 }, { x: 3, y: 18 }, { x: 4, y: 20 }, { x: 5, y: 17 }, { x: 6, y: 10 }, { x: 7, y: 13 }, { x: 8, y: 18 }, { x: 9, y: 20 }, { x: 10, y: 17 }];
-  // chart4: any;
-
-  // dps5 = [{ x: 1, y: 10 }, { x: 2, y: 13 }, { x: 3, y: 18 }, { x: 4, y: 20 }, { x: 5, y: 17 }, { x: 6, y: 10 }, { x: 7, y: 13 }, { x: 8, y: 18 }, { x: 9, y: 20 }, { x: 10, y: 17 }];
-  // chart5: any;
-
-  // dps6 = [{ x: 1, y: 10 }, { x: 2, y: 13 }, { x: 3, y: 18 }, { x: 4, y: 20 }, { x: 5, y: 17 }, { x: 6, y: 10 }, { x: 7, y: 13 }, { x: 8, y: 18 }, { x: 9, y: 20 }, { x: 10, y: 17 }];
-  // chart6: any;
-
-  // chartOptions = {
-  //   data: [{
-  //     type: "line",
-  //     dataPoints: this.dps
-  //   }],
-  //   axisX: {
-  //     labelFormatter: function (e) {
-  //       return "";
-  //     }
-  //   }
-  // }
-
-  // chartOptions2 = {
-  //   data: [{
-  //     type: "line",
-  //     dataPoints: this.dps2
-  //   }],
-  //   axisX: {
-  //     labelFormatter: function (e) {
-  //       return "";
-  //     }
-  //   }
-  // }
-
-  // chartOptions3 = {
-  //   data: [{
-  //     type: "line",
-  //     dataPoints: this.dps3
-  //   }],
-  //   axisX: {
-  //     labelFormatter: function (e) {
-  //       return "";
-  //     }
-  //   }
-  // }
-
-  // chartOptions4 = {
-  //   data: [{
-  //     type: "line",
-  //     dataPoints: this.dps4
-  //   }],
-  //   axisX: {
-  //     labelFormatter: function (e) {
-  //       return "";
-  //     }
-  //   }
-  // }
-
-  // chartOptions5 = {
-  //   data: [{
-  //     type: "line",
-  //     dataPoints: this.dps5
-  //   }],
-  //   axisX: {
-  //     labelFormatter: function (e) {
-  //       return "";
-  //     }
-  //   }
-  // }
-
-  // chartOptions6 = {
-  //   data: [{
-  //     type: "line",
-  //     dataPoints: this.dps6
-  //   }],
-  //   axisX: {
-  //     labelFormatter: function (e) {
-  //       return "a";
-  //     }
-  //   }
-  // }
-
-  // getChartInstance(chart: object) {
-  //   this.chart = chart;
-  //   setTimeout(this.updateChart, 1000);
-  // }
-
-  // getChartInstance2(chart: object) {
-  //   this.chart2 = chart;
-  // }
-
-  // getChartInstance3(chart: object) {
-  //   this.chart3 = chart;
-  // }
-
-  // getChartInstance4(chart: object) {
-  //   this.chart4 = chart;
-  // }
-
-  // getChartInstance5(chart: object) {
-  //   this.chart5 = chart;
-  // }
-
-  // getChartInstance6(chart: object) {
-  //   this.chart6 = chart;
-  // }
-
-  // updateChart = () => {
-  //   var yVal = this.dps[this.dps.length - 1].y + Math.round(5 + Math.random() * (-5 - 5));
-  //   this.dps.push({ x: this.dps[this.dps.length - 1].x + 1, y: yVal });
-
-  //   if (this.dps.length > 10) {
-  //     this.dps.shift();
-  //   }
-
-  //   var yVal2 = this.dps2[this.dps2.length - 1].y + Math.round(5 + Math.random() * (-5 - 5));
-  //   this.dps2.push({ x: this.dps2[this.dps2.length - 1].x + 1, y: yVal2 });
-
-  //   if (this.dps2.length > 10) {
-  //     this.dps2.shift();
-  //   }
-
-  //   var yVal3 = this.dps3[this.dps3.length - 1].y + Math.round(5 + Math.random() * (-5 - 5));
-  //   this.dps3.push({ x: this.dps3[this.dps3.length - 1].x + 1, y: yVal3 });
-
-  //   if (this.dps3.length > 10) {
-  //     this.dps3.shift();
-  //   }
-
-  //   var yVal4 = this.dps4[this.dps4.length - 1].y + Math.round(5 + Math.random() * (-5 - 5));
-  //   this.dps4.push({ x: this.dps4[this.dps4.length - 1].x + 1, y: yVal4 });
-
-  //   if (this.dps4.length > 10) {
-  //     this.dps4.shift();
-  //   }
-
-  //   var yVal5 = this.dps5[this.dps5.length - 1].y + Math.round(5 + Math.random() * (-5 - 5));
-  //   this.dps5.push({ x: this.dps5[this.dps5.length - 1].x + 1, y: yVal5 });
-
-  //   if (this.dps5.length > 10) {
-  //     this.dps5.shift();
-  //   }
-
-  //   var yVal6 = this.dps6[this.dps6.length - 1].y + Math.round(5 + Math.random() * (-5 - 5));
-  //   this.dps6.push({ x: this.dps6[this.dps6.length - 1].x + 1, y: yVal6 });
-
-  //   if (this.dps6.length > 10) {
-  //     this.dps6.shift();
-  //   }
-
-  //   this.chart.render();
-  //   this.chart2.render();
-  //   this.chart3.render();
-  //   this.chart4.render();
-  //   this.chart5.render();
-  //   this.chart6.render();
-  //   setTimeout(this.updateChart, 1000);
-  // }
-
+export class AnalysisComponent implements OnInit {
   lineChart1 = new Chart({
     chart: {
       type: 'line'
     },
     title: {
       text: 'Temperature get from Sensors'
+    },
+    xAxis: {
+      title: {
+        text: "time"
+      }
+    },
+    yAxis: {
+      title: {
+        text: "values"
+      }
     },
     credits: {
       enabled: false
@@ -199,6 +43,16 @@ export class AnalysisComponent {
     title: {
       text: 'Humidity get from Sensors'
     },
+    xAxis: {
+      title: {
+        text: "time"
+      }
+    },
+    yAxis: {
+      title: {
+        text: "values"
+      }
+    },
     credits: {
       enabled: false
     },
@@ -216,6 +70,16 @@ export class AnalysisComponent {
     },
     title: {
       text: 'Illuminance get from Sensors'
+    },
+    xAxis: {
+      title: {
+        text: "time"
+      }
+    },
+    yAxis: {
+      title: {
+        text: "values"
+      }
     },
     credits: {
       enabled: false
@@ -235,6 +99,16 @@ export class AnalysisComponent {
     title: {
       text: 'Soil Temperature get from Sensors'
     },
+    xAxis: {
+      title: {
+        text: "time"
+      }
+    },
+    yAxis: {
+      title: {
+        text: "values"
+      }
+    },
     credits: {
       enabled: false
     },
@@ -252,6 +126,16 @@ export class AnalysisComponent {
     },
     title: {
       text: 'Soil Moisture get from Sensors'
+    },
+    xAxis: {
+      title: {
+        text: "time"
+      }
+    },
+    yAxis: {
+      title: {
+        text: "values"
+      }
     },
     credits: {
       enabled: false
@@ -271,6 +155,16 @@ export class AnalysisComponent {
     title: {
       text: 'Soil Electrical Conductivity get from Sensors'
     },
+    xAxis: {
+      title: {
+        text: "time"
+      }
+    },
+    yAxis: {
+      title: {
+        text: "values"
+      }
+    },
     credits: {
       enabled: false
     },
@@ -281,4 +175,33 @@ export class AnalysisComponent {
       } as any
     ]
   })
+
+  ngOnInit() {
+    setInterval(() => {
+      const newDataPoint = Math.floor(Math.random() * 10); // Generate random data point
+      const series1 = this.lineChart1.ref.series[0]; // Get the series
+      const shift1 = series1.data.length >= 10; // Shift if more than 10 points
+      series1.addPoint(newDataPoint, true, shift1); // Add the new point
+
+      const series2 = this.lineChart2.ref.series[0]; // Get the series
+      const shift2 = series2.data.length >= 10; // Shift if more than 10 points
+      series2.addPoint(newDataPoint, true, shift2); // Add the new point
+
+      const series3 = this.lineChart3.ref.series[0]; // Get the series
+      const shift3 = series3.data.length >= 10; // Shift if more than 10 points
+      series3.addPoint(newDataPoint, true, shift3); // Add the new point
+
+      const series4 = this.lineChart4.ref.series[0]; // Get the series
+      const shift4 = series4.data.length >= 10; // Shift if more than 10 points
+      series4.addPoint(newDataPoint, true, shift4); // Add the new point
+
+      const series5 = this.lineChart5.ref.series[0]; // Get the series
+      const shift5 = series5.data.length >= 10; // Shift if more than 10 points
+      series5.addPoint(newDataPoint, true, shift5); // Add the new point
+
+      const series6 = this.lineChart6.ref.series[0]; // Get the series
+      const shift6 = series6.data.length >= 10; // Shift if more than 10 points
+      series6.addPoint(newDataPoint, true, shift6); // Add the new point
+    }, 1000); // Add a point every 1 second
+  }
 }
