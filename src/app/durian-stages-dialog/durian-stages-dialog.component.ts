@@ -9,11 +9,10 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class DurianStagesDialogComponent implements OnInit {
   public selectedStage: string; // Property to store the selected Durian stage
   stages = [ // Define your Durian stages here
-    { value: 'Seeding',  label: 'Stage 1: Seeding' },
-    { value: 'Young Tree', label: 'Stage 2A: Young Tree' },
-    { value: 'First Flowering', label: 'Stage 2B: First Flowering' },
-    { value: 'Fruit Bearing', label: 'Stage 3A: Fruit Bearing' },
-    { value: 'Fruit Ripening', label: 'Stage 3B: Fruit Ripening' }
+    { value: 'Young Tree',      label: 'Stage 1: Young Tree' },
+    { value: 'First Flowering', label: 'Stage 2: First Flowering' },
+    { value: 'Fruit Bearing',   label: 'Stage 3: Fruit Bearing' },
+    { value: 'Fruit Ripening',  label: 'Stage 4: Fruit Ripening' }
   ];
 
   constructor(public dialogRef: MatDialogRef<DurianStagesDialogComponent>) { }
