@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { QRImageDialogComponent } from '../qr-image-dialog/qr-image-dialog.component';
+import { ToastrService, IndividualConfig } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sensors',
@@ -8,7 +9,7 @@ import { QRImageDialogComponent } from '../qr-image-dialog/qr-image-dialog.compo
   styleUrls: ['./sensors.component.css']
 })
 export class SensorsComponent {
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private toastr: ToastrService) { }
   lsn50v2S31BSensors = [
     { title: 'Air Temperature', temperature_first: '30', imageUrl: "assets/centigrade.png" },
     { title: 'Air Humidity', humidty_first: '70', imageUrl: "assets/humidity.png" },
@@ -26,7 +27,7 @@ export class SensorsComponent {
 
   lse018Sensors = [
     { title: 'Soil Temperature', temperature_second: '30', imageUrl: "assets/soil_temp.png" },
-    { title: 'Soil Moisture', moisture_second: '70', imageUrl: "assets/moisturizing.png" },
+    { title: 'Soil Moisture', moisture_second: '30', imageUrl: "assets/moisturizing.png" },
     { title: 'Soil EC', EC_second: '200', imageUrl: "assets/eco-energy.png" },
     { title: 'Battery Capacity', battery_second: '75', imageUrl: "assets/smartphone-charger.png" },
     {
@@ -81,5 +82,25 @@ export class SensorsComponent {
       width: '600px',
       data: { Image: imageUrl },
     });
+  }
+
+  protected checkStatistics(): void {
+    const moistValue: number = parseFloat(this.lse018Sensors[1].moisture_second); // Convert moist to a number
+    if (moistValue < 50) {
+      this.toastr.error("Soil Moisture is currently too low. Trees need watering", "Danger", this.toastConfig());
+    }
+    else if (moistValue >= 50 && moistValue < 75) {
+      this.toastr.warning("Trees need watering in order to reach at least 75%", "Warning", this.toastConfig());
+    }
+    else if (moistValue >= 75 && moistValue <= 100) {
+      // Handle other cases if needed
+      this.toastr.success("Soil Moisture is currently enough", "Optimal", this.toastConfig());
+    }
+  }
+
+  private toastConfig(): Partial<IndividualConfig> {
+    return {
+      timeOut: 0 // Set timeOut to 0 for indefinite display
+    };
   }
 }

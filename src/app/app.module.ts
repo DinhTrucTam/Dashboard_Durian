@@ -51,7 +51,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { AiSupportComponent } from './ai-support/ai-support.component';
 import { ChartModule } from 'angular-highcharts';
 import { QRImageDialogComponent } from './qr-image-dialog/qr-image-dialog.component';
-
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -100,7 +100,8 @@ import { QRImageDialogComponent } from './qr-image-dialog/qr-image-dialog.compon
     MatProgressSpinnerModule,
     MatDialogModule,
     MatRadioModule,
-    ChartModule
+    ChartModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
