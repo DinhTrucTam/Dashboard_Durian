@@ -26,53 +26,40 @@
 
             <mat-card-content class="right-card-content">
                 <div class="forms-container">
-                    <form class="form">
+                    <form class="form" (ngSubmit)="updateUserProfile()">
                         <!-- Form fields for the first row -->
-                        <mat-form-field appearance="fill" class="form-field">
+                        <mat-form-field appearance="fill" class="form-field-username">
                             <mat-label>Username</mat-label>
-                            <input matInput placeholder="Username">
+                            <input matInput placeholder="Username" [(ngModel)]="username" name="username">
                         </mat-form-field>
 
-                        <mat-form-field appearance="fill" class="form-field">
-                            <mat-label>Email</mat-label>
-                            <input matInput placeholder="Email">
-                        </mat-form-field>
-                    </form>
-
-
-                    <form class="form">
                         <!-- Form fields for the second row -->
                         <mat-form-field appearance="fill" class="form-field">
                             <mat-label>First Name</mat-label>
-                            <input matInput placeholder="First Name">
+                            <input matInput placeholder="First Name" [(ngModel)]="firstName" name="firstName">
                         </mat-form-field>
 
                         <mat-form-field appearance="fill" class="form-field">
                             <mat-label>Last Name</mat-label>
-                            <input matInput placeholder="Last Name">
+                            <input matInput placeholder="Last Name" [(ngModel)]="lastName" name="lastName">
                         </mat-form-field>
-                    </form>
 
-
-                    <form class="form">
                         <!-- Form fields for the third row -->
                         <mat-form-field appearance="fill" class="form-field-address">
                             <mat-label>Address</mat-label>
-                            <input matInput placeholder="Address">
+                            <input matInput placeholder="Address" [(ngModel)]="address" name="address">
                         </mat-form-field>
-                    </form>
 
-
-                    <form class="form">
                         <!-- Form fields for the fourth row -->
                         <mat-form-field appearance="fill" class="form-field-phase">
                             <mat-label>Current phase of your farm</mat-label>
-                            <input matInput placeholder="Current phase">
+                            <input matInput placeholder="Current phase" [(ngModel)]="currentPhase" name="currentPhase">
                         </mat-form-field>
+
+                        <!-- Button to update profile -->
+                        <button class="btn-update-profile" type="submit">Update Profile</button>
                     </form>
                 </div>
-
-                <button class="btn-update-profile">Update Profile</button>
             </mat-card-content>
         </mat-card>
     </div>

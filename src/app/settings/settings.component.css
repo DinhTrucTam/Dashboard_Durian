@@ -6,7 +6,7 @@
     margin-left: 3px;
     font-family: 'Hind', sans-serif;
     min-height: 900px;
-    padding: 50px 200px;
+    padding: 50px 50px;
     overflow: hidden;
 }
 
@@ -15,7 +15,6 @@
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     height: calc(100vh - 100px);
-    padding: 10px;
 }
 
 .user-list-card .user-card {
@@ -33,7 +32,7 @@
     width: 50px;
     border-radius: 50%;
     overflow: hidden;
-    margin: 0 15px 0 0;
+    margin: 10px 20px 10px 20px;
 }
 
 .user-list-card .user-card .username {
@@ -57,6 +56,8 @@
     position: relative;
     overflow: hidden;
     scroll-behavior: smooth;
+        padding-bottom: 50px; /* Đổi padding-bottom thành giá trị phù hợp */
+
 }
 
 .chat-container .chat-header {
@@ -75,17 +76,15 @@
     margin: 0 20px;
 }
 
-.btn-primary{
+.btn-primary {
     background-color: #4CAF50;
-    /* Green */
     border: none;
     color: white;
-    padding: 10px 20px;
+    padding: 6px 12px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    /* margin-top: 10px; */
     cursor: pointer;
     border-radius: 5px;
 }
@@ -103,18 +102,18 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    height: calc(100vh - 125px);
+    height: calc(100% - 80px); /* Đổi height thành 100% trừ đi chiều cao của chat header và chat footer */
     padding: 30px;
     overflow-y: auto;
 }
 
 .chat-container .chat-body .message-container {
-    background-color: white;
-    padding: 7px;
-    border-radius: 5px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 20px;
     width: fit-content;
     max-width: 90%;
-    margin-bottom: 15px;
+    margin-bottom: 1px;
 }
 
 .chat-container .chat-body .same-user {

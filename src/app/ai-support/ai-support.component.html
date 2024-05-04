@@ -1,4 +1,5 @@
-<div class="page-container">
+<!-- ai-support.component.html -->
+<div class="container">
     <div class="row">
         <div class="col-md-12">
             <br>
@@ -11,25 +12,19 @@
                         <div class="col-md-8">
                             <div class="frame-box">
                                 <div>
-                                    <p class="card-text padding">
-
-                                    </p>
+                                    <p class="card-text" id="response">{{ aiResponse }}</p>
                                 </div>
-                                <div>
-                                </div>
-
                             </div>
                             <br>
-                            <textarea row="3" cols="15" class="form-control"
+                            <textarea [(ngModel)]="question" rows="3" cols="15" class="form-control"
                                 placeholder="Start by asking what you are looking for"></textarea>
                             <br>
-                            <button class="btn-primary push-right">Send</button>
+                            <button (click)="askQuestion()" class="btn btn-primary push-right" [disabled]="loading">
+                                {{ loading ? 'Sending...' : 'Send' }}
+                            </button>
                         </div>
-                        <div class="col-md-2">
-
-                        </div>
+                        <div class="col-md-2"></div>
                     </div>
-
                 </div>
             </div>
         </div>

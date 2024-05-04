@@ -1,20 +1,19 @@
-import { Component } from '@angular/core';
-import { AfterViewInit, OnInit, ViewChild } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
+import { OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ChatService } from '../Services/chat';
 import { AuthService } from '../_login_services/auth.service';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.css']
+  styleUrls: ['./settings.component.css'],
 })
-export class SettingsComponent implements OnInit, AfterViewInit {
-  @ViewChild('popup', { static: false }) popup: any;
-
+export class SettingsComponent implements OnInit {
   public roomId: string;
   public messageText: string;
-  public messageArray: { user: string, message: string }[] = [];
+  public messageArray: { user: string; message: string }[] = [];
   private storageArray = [];
 
   public showScreen = false;
@@ -31,8 +30,8 @@ export class SettingsComponent implements OnInit, AfterViewInit {
       roomId: {
         2: 'room-1',
         3: 'room-2',
-        4: 'room-3'
-      }
+        4: 'room-3',
+      },
     },
     {
       id: 2,
@@ -42,63 +41,77 @@ export class SettingsComponent implements OnInit, AfterViewInit {
       roomId: {
         1: 'room-1',
         3: 'room-4',
-        4: 'room-5'
-      }
+        4: 'room-5',
+      },
     },
   ];
 
   constructor(
     private modalService: NgbModal,
     private chatService: ChatService,
-    public auth: AuthService
-  ) {
-  }
+    public auth: AuthService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
-    this.chatService.getMessage()
-      .subscribe((data: { user: string, room: string, message: string }) => {
-        // this.messageArray.push(data);
-        if (this.roomId) {
-          setTimeout(() => {
-            this.storageArray = this.chatService.getStorage();
-            const storeIndex = this.storageArray
-              .findIndex((storage) => storage.roomId === this.roomId);
-            this.messageArray = this.storageArray[storeIndex].chats;
-          }, 500);
-        }
-      });
+    const token = sessionStorage.getItem('token'); // Retrieve token from session storage
+    if (token) {
+      const decodedToken: any = jwtDecode(token); // Decode the token
+      this.auth.person_type = decodedToken.role; // Assign the role from the decoded token
+
+      // Now that we have the role, let's proceed with logging in the user automatically
+      this.login(this.auth.person_type);
+    }
+        this.chatService
+          .getMessage()
+          .subscribe(
+            (data: { user: string; room: string; message: string }) => {
+              // this.messageArray.push(data);
+              
+              if (this.roomId) {
+                this.storageArray = this.chatService.getStorage();
+                const storeIndex = this.storageArray.findIndex(
+                  (storage) => storage.roomId === this.roomId
+                );
+                // this.messageArray = this.storageArray[storeIndex].chats;
+                console.log(this.storageArray)
+                this.messageArray = [...this.messageArray, data]
+                console.log("min cu bu", this.messageArray )
+                setTimeout(() => {
+                  this.cdr.detectChanges();
+
+                },1000)
+                
+              }
+            }
+          );
   }
 
-  ngAfterViewInit(): void {
-    this.openPopup(this.popup);
-  }
-
-  openPopup(content: any): void {
-    this.modalService.open(content, { backdrop: false, centered: true });
-  }
-
-  login(dismiss: any): void {
-    if (this.auth.person_type != this.role)
-    {
+  login(role: string): void {
+    if (this.auth.person_type != role) {
       return;
     }
-    this.currentUser = this.userList.find(user => user.role === this.role.toString());
-    this.userList = this.userList.filter((user) => user.role !== this.role.toString());
+    this.currentUser = this.userList.find(
+      (user) => user.role === role.toString()
+    );
+    this.userList = this.userList.filter(
+      (user) => user.role !== role.toString()
+    );
 
     if (this.currentUser) {
       this.showScreen = true;
-      dismiss();
     }
   }
 
   selectUserHandler(phone: string): void {
-    this.selectedUser = this.userList.find(user => user.role === phone);
+    this.selectedUser = this.userList.find((user) => user.role === phone);
     this.roomId = this.selectedUser.roomId[this.currentUser.id];
     this.messageArray = [];
 
     this.storageArray = this.chatService.getStorage();
-    const storeIndex = this.storageArray
-      .findIndex((storage) => storage.roomId === this.roomId);
+    const storeIndex = this.storageArray.findIndex(
+      (storage) => storage.roomId === this.roomId
+    );
 
     if (storeIndex > -1) {
       this.messageArray = this.storageArray[storeIndex].chats;
@@ -115,25 +128,28 @@ export class SettingsComponent implements OnInit, AfterViewInit {
     this.chatService.sendMessage({
       user: this.currentUser.name,
       room: this.roomId,
-      message: this.messageText
+      message: this.messageText,
     });
 
     this.storageArray = this.chatService.getStorage();
-    const storeIndex = this.storageArray
-      .findIndex((storage) => storage.roomId === this.roomId);
+    const storeIndex = this.storageArray.findIndex(
+      (storage) => storage.roomId === this.roomId
+    );
 
     if (storeIndex > -1) {
       this.storageArray[storeIndex].chats.push({
         user: this.currentUser.name,
-        message: this.messageText
+        message: this.messageText,
       });
     } else {
       const updateStorage = {
         roomId: this.roomId,
-        chats: [{
-          user: this.currentUser.name,
-          message: this.messageText
-        }]
+        chats: [
+          {
+            user: this.currentUser.name,
+            message: this.messageText,
+          },
+        ],
       };
 
       this.storageArray.push(updateStorage);
