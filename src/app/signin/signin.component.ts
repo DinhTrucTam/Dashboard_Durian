@@ -65,7 +65,7 @@ export class SigninComponent implements OnInit {
 
   private toastConfig(): Partial<IndividualConfig> {
     return {
-      timeOut: 5000, // Set timeOut to 0 for indefinite display
+      timeOut: 50000, // Set timeOut to 0 for indefinite display
     };
   }
 }

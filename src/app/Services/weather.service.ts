@@ -48,10 +48,10 @@ export class WeatherService {
   constructor(private httpClient: HttpClient) {
     //  REMEMBER TO COMMENT THESE BELOW LINES WHEN DEBUGGING
 
-    // this.getData();
-    // timer(12 * 60 * 60 * 1000, 12 * 60 * 60 * 1000).subscribe(() => {
-    //   this.getData();
-    // });
+    this.getData();
+    timer(12 * 60 * 60 * 1000, 12 * 60 * 60 * 1000).subscribe(() => {
+      this.getData();
+    });
   }
 
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Chart } from 'angular-highcharts';
 import { ChartDataService } from '../Services/chart-data.service';
 import { Subscription } from 'rxjs';
+import axios from 'axios';
 
 
 @Component({
@@ -17,6 +18,22 @@ export class AnalysisComponent implements OnInit {
   lineChart4: Chart;
   lineChart5: Chart;
   lineChart6: Chart;
+
+  downloadCSV() {
+    axios.get('http://localhost:3000/sensor/getCSV', {
+      responseType: 'blob', // Important to ensure the response is a Blob
+    }).then((response) => {
+      const url = window.URL.createObjectURL(new Blob([response.data], { type: 'text/csv' }));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'data_history.xlsx'); // or any other extension
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }).catch((error) => {
+      console.error('There was an error downloading the CSV file!', error);
+    });
+  }
 
   constructor(private chartDataService: ChartDataService) {}
 

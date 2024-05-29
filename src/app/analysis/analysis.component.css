@@ -86,3 +86,34 @@
     position: relative;
     z-index: 1;
 }
+
+.export-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.export-button-container button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 4px #999;
+    transition: background-color 0.3s ease;
+}
+
+.export-button-container button:hover {
+    background-color: #45a049;
+}
+
+.export-button-container button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 2px #666;
+    transform: translateY(2px);
+}

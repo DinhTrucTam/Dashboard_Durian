@@ -1,5 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import axios from 'axios';
+import { SensorService } from '../Services/sensor.service';
+import { DashboardDataService } from '../Services/dashboard-data.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,30 +9,47 @@ import axios from 'axios';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  Dashboard_Header = [
-    { title: 'Sensors', info: 'Number of current sensors', values: '3' },
-    { title: 'Gateway', info: 'Gateway status', values: 'Good' },
-    { title: 'Lights', info: 'Light status', values: 'On' },
-    { title: 'Stage', info: 'Current stage', values: '' }, // Initialize as empty string
-  ];
+  constructor(private sensorService: SensorService, @Inject(DashboardDataService) private dashboardDataService: DashboardDataService) { }
 
-  Air_Information = [
-    { title: 'Temperature', temp: '30', imageUrl: 'assets/centigrade.png' },
-    { title: 'Humidity', humid: '30', imageUrl: 'assets/humidity.png' },
-    { title: 'Illuminance', illum: '30', imageUrl: 'assets/contrast.png' },
-  ];
 
-  Soil_Information = [
-    { title: 'Temperature', temp: '70', imageUrl: 'assets/soil_temp.png' },
-    { title: 'Moisture', moist: '70', imageUrl: 'assets/hydrated-skin.gif' },
-    { title: 'EC', EC: '200', imageUrl: 'assets/electricity.gif' },
-  ];
+  ngOnInit() {
+    let temp1, temp2 = 30;
+    let tempfinal = 0;
+    this.sensorService.receiveTemperatureLightSensorData().subscribe(data => {
+      const stringData = data.map(value => String(value));
+      this.Air_Information[2].illum = String(stringData[0]); // Illuminance
+      temp1 = parseInt(stringData[1]); // Air Temperature
+      tempfinal = (temp1 + temp2) / 2;
+      this.Air_Information[0].temp = String(stringData[1]);
+    });
 
-  constructor() {}
+    this.sensorService.receiveTemperatureHumidityECData().subscribe(data => {
+      const stringData = data.map(value => String(value));
+      const currentTime = new Date();
+      console.log("stringdata",stringData)
+      this.Soil_Information[1].moist = String(stringData[2]); // Soil Moisture
+      this.Soil_Information[0].temp = String(stringData[0]); // Soil Temperature
+      this.Soil_Information[2].EC = String(stringData[1]); // Soil EC
+    });
 
-  ngOnInit(): void {
-    // Call a function to fetch the current stage
+    this.sensorService.receiveTemperatureHumidityData().subscribe(data => {
+      const stringData = data.map(value => String(value));
+      const currentTime = new Date();
+      this.Air_Information[1].humid = stringData[0]; // Air Humidity
+      temp2 = parseInt(stringData[1]); // Air Temperature
+      tempfinal = (temp1 + temp2) / 2;
+      this.Air_Information[0].temp = String(stringData[1]);
+    });
     this.fetchCurrentStage();
+  }
+  get Dashboard_Header() {
+    return this.dashboardDataService.Dashboard_Header;
+  }
+  get Air_Information() {
+    return this.dashboardDataService.Air_Information;
+  }
+  get Soil_Information() {
+    return this.dashboardDataService.Soil_Information;
   }
 
   fetchCurrentStage() {

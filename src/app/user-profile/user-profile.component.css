@@ -8,6 +8,11 @@
     min-height: 900px;
 }
 
+.firstlast {
+    display: flex;
+    justify-content: space-between;
+}
+
 .title {
     font-family: 'Hind', sans-serif;
     font-size: 30px;
@@ -120,6 +125,7 @@
 
 .form-field {
     padding: 10px;
+    flex: 1;
 }
 
 .form-field-address {
